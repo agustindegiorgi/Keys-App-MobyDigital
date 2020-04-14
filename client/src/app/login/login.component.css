@@ -1,0 +1,12 @@
+#container { 
+    position: fixed;
+    width: 340px;
+    height: 287px;
+    top: 27%;
+    left: 33%;
+    padding: 10px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 8px rgba(238, 238, 238, 0.918);
+}

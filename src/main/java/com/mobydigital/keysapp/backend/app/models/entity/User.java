@@ -2,9 +2,12 @@ package com.mobydigital.keysapp.backend.app.models.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+
 
 
 @Entity
@@ -16,7 +19,9 @@ public class User implements Serializable {
 	    @Id
 		private Integer dni;
 	    private String telephone;
-	    private String  name;    
+	    @Column(nullable = false)
+	    private String  name;  
+	    @Column(nullable = false)
 	    private String  lastname;
 	    private String  email;
 		
