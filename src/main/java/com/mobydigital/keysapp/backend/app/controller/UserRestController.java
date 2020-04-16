@@ -20,14 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mobydigital.keysapp.backend.app.models.entity.User;
 import com.mobydigital.keysapp.backend.app.models.services.IUserService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
-@RestController
-@RequestMapping("/api")
-public class UserRestController {
+//5to
+//Todas las request del front necesarias.
 
+@CrossOrigin(origins = { "http://localhost:4200" }) //otorgamos permiso a esta URL de todas las request.
+@RestController  //rest utiliza cuatro verbos http...
+@RequestMapping("/api") //Generamos nuestra URL que va a anteponer las otras.
+public class UserRestController {                
+     
+	//inyectamos la interface creada IUserservice que va a buscar la clase que la implementa.
 	@Autowired
 	private IUserService userService;
-
+    
+    //generamos un endpoint del metodo
 	@GetMapping("/users")
 	public ResponseEntity<Object> list() {
 
