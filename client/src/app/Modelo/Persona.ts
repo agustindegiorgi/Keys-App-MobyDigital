@@ -2,6 +2,6 @@ export class Persona {
     dni: number;
     name: string;
     lastname: string;
-    phone: string;
+    telephone: string;
     email: string;
 }

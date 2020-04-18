@@ -23,7 +23,7 @@ import com.mobydigital.keysapp.backend.app.models.services.IUserService;
 //5to
 //Todas las request del front necesarias.
 
-@CrossOrigin(origins = { "http://localhost:4200" }) //otorgamos permiso a esta URL de todas las request.
+@CrossOrigin(origins = { "http://localhost:4200"}) //otorgamos permiso a esta URL de todas las request.
 @RestController  //rest utiliza cuatro verbos http...
 @RequestMapping("/api") //Generamos nuestra URL que va a anteponer las otras.
 public class UserRestController {                

@@ -26,7 +26,7 @@ export class ListarComponent {
   }
 
   Editar(persona:Persona):void{
-    localStorage.setItem("id",persona.dni.toString());
+    localStorage.setItem("dni",persona.dni.toString());
     this.router.navigate(["edit"]);
   }
 

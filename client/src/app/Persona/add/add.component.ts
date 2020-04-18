@@ -10,7 +10,7 @@ import { Persona } from 'src/app/Modelo/Persona';
 })
 export class AddComponent implements OnInit {
 
-  persona:Persona=new Persona();
+  persona:Persona= new Persona();
   constructor(private router:Router, private service:PersonaService) { }
 
   ngOnInit() {
