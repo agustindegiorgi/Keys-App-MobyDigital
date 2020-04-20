@@ -12,7 +12,7 @@ export class PersonaService {
 
   constructor(private http:HttpClient) { }
 
-  private Url:string="http://localhost:8080/api"; //host de backend, la barra '/' sola es el index
+  private Url:string="http://localhost:8081/api"; //host de backend, la barra '/' sola es el index
 
   getPersonas():Observable<Persona[]> {
     return this.http.get<Persona[]>(this.Url+"/users"); //obtengo todos los datos de la URL de arriba, que se refiere al backend
