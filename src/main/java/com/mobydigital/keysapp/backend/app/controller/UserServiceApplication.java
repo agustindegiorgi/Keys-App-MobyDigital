@@ -1,10 +1,11 @@
 package com.mobydigital.keysapp.backend.app.controller;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mobydigital.keysapp.backend.app.models.entity.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,13 +24,9 @@ public class UserServiceApplication {
 
 	@GetMapping("/getUsers")
 	public List<User> getUsers(){
-		return Stream.of(new User(108,"Santosh","santosh@gmail.com","9087654321"),
-				new User(101,"Basant","basant@gmail.com","8867101121")).
+		return Stream.of(new User(43369999, "Agustín", "De Giorgi", "3535183039", "dgagustin01@gmail.com"),
+				new User(43369999, "Norberto", "Magarzo", "3515325534", "norbertom@gmail.com")).
 				collect(Collectors.toList());
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(UserServiceApplication.class, args);
 	}
 
 }
