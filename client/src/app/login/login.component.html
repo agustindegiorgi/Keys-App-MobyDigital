@@ -4,13 +4,13 @@
         <!--Primer Fila-->
         <div class="form-group">
             <label for="exampleInputEmail1">Usuario (DNI)</label>
-            <input type="text" class="form-control" id="user" formControlName="dni"
+            <input type="text" [(ngModel)]="username" name="username" class="form-control" id="user" formControlName="dni"
             placeholder="00000000" maxlength="8" (keydown)="onKeyDown($event)" (onpaste)="onPaste($event)">
         </div>
             <!--Segunda Fila-->
         <div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="password" formControlName="pass" maxlength="16">
+            <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" formControlName="pass" maxlength="16">
         </div>
         <!--Tercer Fila-->
         <div class="form-group form-check" style="margin-top: 40px">
@@ -21,7 +21,7 @@
             </div>
             <div class="col"></div> 
             <div class="col-3">
-            <button type="submit" class="btn btn-primary">Ingresar</button> 
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Ingresar</button> 
             </div>
         </div>
         </div>

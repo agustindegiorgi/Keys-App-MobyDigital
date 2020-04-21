@@ -14,15 +14,15 @@ export class LoginService {
   constructor(private http: HttpClient) { 
   }
 
-  login(dni: number, pass: string)
-  {
-    return this.http.post<LoginUser>("localhost:5000/login", {}, {
-      headers:
-        new HttpHeaders(
-          {
-            'Content-Type': 'application/json',
-          }
-        )
-    });
+  login(username:string,password:string){
+      const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+      return this.http.get("http://localhost:8081/",{headers,responseType: 'text' as 'json'})
+    }
+
+  getUsers() {
+       let username='43369999'
+       let password='moby123'
+       const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
+       return  this.http.get("http://localhost:8081/getUsers",{headers});
   }
 }

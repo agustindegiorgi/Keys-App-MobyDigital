@@ -22,11 +22,4 @@ public class UserServiceApplication {
 		return "authenticated successfully" ;
 	}
 
-	@GetMapping("/getUsers")
-	public List<User> getUsers(){
-		return Stream.of(new User(43369999, "Agustín", "De Giorgi", "3535183039", "dgagustin01@gmail.com"),
-				new User(43369999, "Norberto", "Magarzo", "3515325534", "norbertom@gmail.com")).
-				collect(Collectors.toList());
-	}
-
 }

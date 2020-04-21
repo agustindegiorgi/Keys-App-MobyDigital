@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //acá está 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginComponent } from './login/login.component';
+import { LoginService } from "./login.service";
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AppRootComponent } from './app-root/app-root.component';
 import { ListarComponent } from './Persona/listar/listar.component';
@@ -39,7 +40,8 @@ import { VerDialogComponent } from "./Persona/listar/ver-dialog/ver-dialog.compo
     BrowserAnimationsModule
   ],
   providers: [
-    PersonaService //declaro el servicio en providers
+    PersonaService, //declaro el servicio en providers
+    LoginService
   ], 
   bootstrap: [AppRootComponent]
 })

@@ -7,9 +7,9 @@ import { AddComponent } from './Persona/add/add.component';
 import { EditComponent } from './Persona/edit/edit.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, data: { title: 'login' } },
   { path: 'adminhome', component: AdminHomeComponent, data: { title: 'Admin Home' } },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
 
  // http://keysapp.com/
 
