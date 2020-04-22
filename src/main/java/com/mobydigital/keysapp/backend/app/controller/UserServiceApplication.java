@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 @CrossOrigin(origins = "*")
 public class UserServiceApplication {
 
+
 	@GetMapping("/")
 	public String login(){
 		return "authenticated successfully" ;
