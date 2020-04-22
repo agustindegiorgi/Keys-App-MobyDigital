@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
-import { RestapiService } from "../restapi.service";
 
 @Component({
   selector: 'login',
