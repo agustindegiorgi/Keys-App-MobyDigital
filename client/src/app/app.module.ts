@@ -4,15 +4,16 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; //con esta funcione el ServiceService
 import { AppRoutingModule } from './app-routing.module';
 
-import { MaterialModule } from './material.module'
+import { MaterialModule } from './material/material.module'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //acá está el FormsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginComponent } from './login/login.component';
-import { LoginService } from "./login.service";
-import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { AppRootComponent } from './app-root/app-root.component';
+import { LoginService } from "./Service/login.service";
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from "./user/user.component";
+import { HomeComponent } from "./home/home.component";
 import { ListarComponent } from './Persona/listar/listar.component';
 import { AddComponent } from './Persona/add/add.component';
 import { EditComponent } from './Persona/edit/edit.component';
@@ -22,11 +23,12 @@ import { VerDialogComponent } from "./Persona/listar/ver-dialog/ver-dialog.compo
 @NgModule({
   declarations: [
     LoginComponent,
-    AdminHomeComponent,
-    AppRootComponent,
+    AdminComponent,
+    UserComponent,
     ListarComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
+    HomeComponent
   ],
   entryComponents: [ VerDialogComponent ],
   imports: [
@@ -43,6 +45,6 @@ import { VerDialogComponent } from "./Persona/listar/ver-dialog/ver-dialog.compo
     PersonaService, //declaro el servicio en providers
     LoginService
   ], 
-  bootstrap: [AppRootComponent]
+  bootstrap: [HomeComponent]
 })
 export class AppModule { }

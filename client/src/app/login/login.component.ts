@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
-import { LoginService } from '../login.service';
+import { LoginService } from '../Service/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,15 +20,13 @@ export class LoginComponent {
   }
 
   profileForm = new FormGroup({
-    dni: new FormControl(''),
-    pass: new FormControl('')
+    username: new FormControl(''),
+    password: new FormControl('')
   })
 
   onSubmit() {
-    
-    
     let resp = this.loginService.login(this.username, this.password);
-   
+
     resp.subscribe(data => {
       console.log(data)
       this.message = data;
