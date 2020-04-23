@@ -25,8 +25,10 @@ export class ListarComponent {
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
   }
 
-  Editar(persona:Persona):void{
-    localStorage.setItem("id",persona.dni.toString());
+  Editar(persona:Persona):void
+  {
+    console.log(persona)
+    localStorage.setItem("dni",persona.dni.toString());
     this.router.navigate(["edit"]);
   }
 

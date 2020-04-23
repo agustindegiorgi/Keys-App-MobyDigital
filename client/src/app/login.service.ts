@@ -19,10 +19,5 @@ export class LoginService {
       return this.http.get("http://localhost:8081/",{headers,responseType: 'text' as 'json'})
     }
 
-  getUsers() {
-       let username='43369999'
-       let password='moby123'
-       const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-       return  this.http.get("http://localhost:8081/getUsers",{headers});
-  }
+
 }

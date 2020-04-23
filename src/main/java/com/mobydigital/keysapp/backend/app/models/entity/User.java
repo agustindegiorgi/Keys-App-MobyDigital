@@ -24,19 +24,7 @@ public class User implements Serializable {
 	    @Column(nullable = false)
 	    private String  lastname;
 	    private String  email;
-		
-	   
-	    
-	    public User(Integer dni, String telephone, String name, String lastname, String email) {
-			super();
-			this.dni = dni;
-			this.telephone = telephone;
-			this.name = name;
-			this.lastname = lastname;
-			this.email = email;
-		}
-	    
-	    
+
 	    
 		public Integer getDni() {
 			return dni;

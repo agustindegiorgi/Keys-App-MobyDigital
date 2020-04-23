@@ -25,10 +25,15 @@ export class LoginComponent {
   })
 
   onSubmit() {
+    
+    
     let resp = this.loginService.login(this.username, this.password);
+   
     resp.subscribe(data => {
+      console.log(data)
       this.message = data;
-     this.router.navigate(["adminhome"])
+     if(data == 'error' )
+     { this.router.navigate(["adminhome"])}
     });
   }
 
