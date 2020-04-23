@@ -18,17 +18,11 @@ import java.util.stream.Stream;
 public class UserServiceApplication {
 
 	  @GetMapping("/")
-	   public String login(String username, String password){
-	
-		if (username == "1234" || password == "1234") {
-		  
-			return "nose";	
+	   public String login(Integer username, Integer password){
+
+		if (username == 1234 && password == 1234) {
 			
-		}else if (username == "1234" && password == "1234") {
-			
-		
-			
-			return "ok";
+			return "ok";	
 		}
 			
 		
