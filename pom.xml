@@ -8,6 +8,7 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.mobydigital.keysapp.backend.app</groupId>
 	<artifactId>keys-app-core2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -85,8 +86,6 @@
 		</dependency>
 	</dependencies>
       
-	
-
 	<build>
 		<plugins>
 			<plugin>
