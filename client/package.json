@@ -4,13 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "postinstall": "ng build --aot -prod",
-    "heroku-postbuild": "ng build --prod",
     "build": "ng build",
     "tsc": "tsc -p src -w",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
