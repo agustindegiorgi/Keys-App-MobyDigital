@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserServiceApplication {
 
 	  @GetMapping("/")
-	   public String login(Integer username, Integer password){
+	    public String loguin() {
+		  return "hola";
+	  }
+	  
+	  
+	  /*  public String login(Integer username, Integer password){
 
 		if (username == 1234 && password == 1234) {
 			
@@ -22,6 +27,6 @@ public class UserServiceApplication {
 		return "error";
 		
 		
-	}
+	}*/
 
 }
