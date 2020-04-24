@@ -31,7 +31,7 @@ export class LoginComponent {
       console.log(data)
       this.message = data;
      if(data == 'ok' )
-     { this.router.navigate(["adminhome"])}
+     { this.router.navigate(["admin"])}
      else{
        alert('usuario o contraseña mal puesta')
      }

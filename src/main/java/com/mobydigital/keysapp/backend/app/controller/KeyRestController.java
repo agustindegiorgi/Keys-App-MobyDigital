@@ -45,6 +45,7 @@ public class KeyRestController {
 	@DeleteMapping("/key/{id}")
 	public ResponseEntity<Object> deleteByid(@PathVariable Integer id ) {
 		keyService.deleteById(id);
+		
 		return new ResponseEntity<Object>( "LLAVE BORRADA", HttpStatus.OK);
 	}
 	
@@ -52,6 +53,7 @@ public class KeyRestController {
 	public Key update(@RequestBody Key key,@PathVariable Integer id ) {
 		Key currentKey= keyService.findById(id);
 		currentKey.setName(key.getName());
+		
 		return keyService.save(currentKey);
 	}
 	
