@@ -7,8 +7,10 @@ app.use(express.static(__dirname + '/dist/keys-app-mobydigital'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/keys-app-mobydigital/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/keys-app-mobydigital/index.html'));
 });
 
 // default Heroku port
 app.listen(process.env.PORT || 8080);
+
+
