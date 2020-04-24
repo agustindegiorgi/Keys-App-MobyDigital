@@ -7,25 +7,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@CrossOrigin(origins ="*")
+@CrossOrigin(origins = "*")
 public class UserServiceApplication {
 
-	  @GetMapping("/")
-	    public String login() {
-		  return "Hola Moby!!!!";
-	  }
-
-	  /*  public String login(Integer username, Integer password){
+	@GetMapping("/")
+	public String login(Integer username, Integer password) {
 
 		if (username == 1234 && password == 1234) {
-			
-			return "ok";	
+
+			return "ok";
 		}
-			
-		
+
 		return "error";
-		
-		
-	}*/
+
+	}
+	/*
+	 * public String login() { return "Hola Moby!!!!"; }
+	 */
 
 }
