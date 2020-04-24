@@ -1,16 +1,14 @@
-//Install express server
-const express = require('express');
 const path = require('path');
-
+const express = require('express');
 const app = express();
 
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/<keys-app-mobydigital>'));
+// Serve static files
+app.use(express.static(__dirname + '/dist/keys-app-mobydigital'));
 
-app.get('/*', function(req,res) {
-    
-res.sendFile(path.join(__dirname+'/dist/<keys-app-mobydigital>/index.html'));
+// Send all requests to index.html
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/keys-app-mobydigital/index.html'));
 });
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8082);
+// default Heroku port
+app.listen(process.env.PORT || 4200);
