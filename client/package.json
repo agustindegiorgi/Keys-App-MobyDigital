@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "postinstall": "ng build --aot -prod",
+    "heroku-postbuild": "ng build --prod",
     "build": "ng build",
     "tsc": "tsc -p src -w",
     "test": "ng test",
@@ -24,11 +26,13 @@
     "@angular/router": "^9.1.0",
     "ag-grid-angular": "^23.0.2",
     "ag-grid-community": "^23.0.2",
+    "express": "^4.17.1",
     "flx-ui-datatable": "^1.1.5",
     "help": "^3.0.2",
     "jquery": "^3.4.1",
     "ng-editable-table": "^0.3.15",
     "ngx-perfect-scrollbar": "^9.0.0",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.4",
     "tslib": "^1.10.0",
@@ -43,6 +47,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.12.34",
     "codelyzer": "^5.2.2",
+    "enhanced-resolve": "^4.1.1",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.3.0",
@@ -54,5 +59,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
+  },
+  "engines": {
+    "node": "13.11.0",
+    "npm": "6.14.4"
   }
 }
