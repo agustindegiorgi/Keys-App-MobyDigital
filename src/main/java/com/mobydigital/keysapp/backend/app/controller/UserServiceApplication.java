@@ -13,13 +13,8 @@ public class UserServiceApplication {
 	@GetMapping("/")
 	public String login(Integer username, Integer password) {
 
-		if (username == 1234 && password == 1234) {
-
-			return "ok";
-		}
-
-		return "error";
-
+		return "conexión hecha";
+		
 	}
 	/*
 	 * public String login() { return "Hola Moby!!!!"; }
