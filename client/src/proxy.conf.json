@@ -1,0 +1,9 @@
+{
+    "/api": {
+        "target": "https://keys-app-mobydigital.herokuapp.com/",
+        "secure": false,
+        "pathRewrite": {
+            "^/api": "" },
+        "changeOrigin": true
+        }
+}
