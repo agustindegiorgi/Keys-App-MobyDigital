@@ -13,8 +13,7 @@ public class UserServiceApplication {
 	@GetMapping("/")
 	public String login(Integer username, Integer password) {
 
-		return "conexión hecha";
-		
+		return "conexión establecida";
 	}
 	/*
 	 * public String login() { return "Hola Moby!!!!"; }
