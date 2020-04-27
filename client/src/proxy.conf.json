@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://keys-app-mobydigital.herokuapp.com/",
+        "target": "http://localhost:8081/",
         "secure": false,
         "pathRewrite": {
             "^/api": "" },
