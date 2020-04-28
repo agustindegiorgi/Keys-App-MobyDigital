@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { PersonaService } from "../../../Service/persona-service";
 import { Persona } from 'src/app/Modelo/Persona';
-import { MatDialog } from '@angular/material/dialog';
-import { VerDialogUserComponent } from './ver-dialog-user/ver-dialog-user.component';
+import { VerDialogUserComponent } from './ver-dialog-user/ver-dialog-user.compon
 
 @Component({
   selector: 'app-listar-user',
@@ -23,6 +23,21 @@ export class ListarUserComponent {
     .subscribe((data: Persona[])=>{
       this.personas=data;
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
+  }
+
+  Editar(persona:Persona):void
+  {
+    console.log(persona)
+    localStorage.setItem("dni",persona.dni.toString());
+    this.router.navigate(["edit"]);
+  }
+
+  Delete(persona:Persona){
+    this.service.deletePersona(persona)
+    .subscribe(()=>{
+      this.personas=this.personas.filter(p=>p!==persona);
+      alert("Usuario eliminado...");
+    })
   }
 
   openDialog() {
