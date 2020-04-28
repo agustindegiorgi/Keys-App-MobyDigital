@@ -11,7 +11,7 @@ export class UserComponent {
   constructor(private router:Router) { }
 
   Listar() {
-    this.router.navigate(["listar"]);
+    this.router.navigate(["listar-user"]);
    }
 
 }

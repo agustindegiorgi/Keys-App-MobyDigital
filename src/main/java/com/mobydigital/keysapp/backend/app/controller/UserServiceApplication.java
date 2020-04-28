@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserServiceApplication {
 
 	@GetMapping("/")
-	public String login(Integer username, String password) {
+	public String login(Integer username, Integer password) {
 		/*
 		 * ADMINISTRADOR
 		 */
-		if (username == 1234 && password == "admin") {
+		if (username == 1234 && password == 1234) {
 			return "OK ADMIN";
 		}
 		else {
 			/*
 			 * USUARIO
 			 */
-			if (username == 4321 && password == "user") {
+			if (username == 4321 && password == 4321) {
 				return "OK USER";
 			}
 			else {

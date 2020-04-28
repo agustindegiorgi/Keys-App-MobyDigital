@@ -13,24 +13,27 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from "./Service/login.service";
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from "./user/user.component";
+import { ListarUserComponent } from './user/lista/listar/listar-user.component';
 import { HomeComponent } from "./home/home.component";
-import { ListarComponent } from './Persona/listar/listar.component';
-import { AddComponent } from './Persona/add/add.component';
-import { EditComponent } from './Persona/edit/edit.component';
+import { ListarComponent } from './admin/lista/listar/listar.component';
+import { AddComponent } from './admin/Lista/add/add.component';
+import { EditComponent } from './admin/Lista/edit/edit.component';
 import { PersonaService } from "./Service/persona-service";
-import { VerDialogComponent } from "./Persona/listar/ver-dialog/ver-dialog.component";
+import { VerDialogComponent } from "./admin/lista/listar/ver-dialog/ver-dialog.component";
+import { VerDialogUserComponent } from "./user/lista/listar/ver-dialog-user/ver-dialog-user.component";
 
 @NgModule({
   declarations: [
     LoginComponent,
     AdminComponent,
     UserComponent,
+    ListarUserComponent,
     ListarComponent,
     AddComponent,
     EditComponent,
     HomeComponent
   ],
-  entryComponents: [ VerDialogComponent ],
+  entryComponents: [ VerDialogComponent, VerDialogUserComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

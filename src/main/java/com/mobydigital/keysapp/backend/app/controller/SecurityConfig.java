@@ -18,14 +18,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().frameOptions().disable();
     }
-	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-		.inMemoryAuthentication()
-		.withUser("123")
-		.password("{noop}123")
-		.roles("USER","ADMIN");
-	}
-
 }

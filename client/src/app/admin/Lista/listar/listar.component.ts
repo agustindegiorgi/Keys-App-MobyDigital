@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonaService } from "../../Service/persona-service";
+import { PersonaService } from "../../../Service/persona-service";
 import { Persona } from 'src/app/Modelo/Persona';
 import { MatDialog } from '@angular/material/dialog';
 import { VerDialogComponent } from './ver-dialog/ver-dialog.component';
