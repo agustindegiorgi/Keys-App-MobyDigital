@@ -23,11 +23,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
 
-    - run: npm install
-      working-directory: ${{env.working-directory}}
-    - run: npm install -g @angular/cli > /dev/null
-      working-directory: ${{env.working-directory}}
-    - run: npm run build
+    - run: |
+            npm install -g @angular/cli > /dev/null
+            npm install
+            ng build
       working-directory: ${{env.working-directory}}
 
     - name: copy file via ssh key
