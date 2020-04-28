@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { HomeComponent } from './home/home.component';
+
 import { ListarComponent } from './admin/lista/listar/listar.component';
+import { ListarUserComponent } from './user/lista/listar/listar-user.component'
 import { AddComponent } from './admin/Lista/add/add.component';
 import { EditComponent } from './admin/Lista/edit/edit.component';
 
-import { LoginComponent } from './login/login.component';
-
-import { UserComponent } from './user/user.component';
-import { ListarUserComponent } from './user/lista/listar/listar-user.component'
-
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path:'home', component: HomeComponent, data: { title: 'Home' } },
   { path: 'login', component: LoginComponent, data: { title: 'login' } },
   { path: 'admin', component: AdminComponent, data: { title: 'Admin Home' } },
   { path:'user', component: UserComponent, data: { title: 'User Home' } },
