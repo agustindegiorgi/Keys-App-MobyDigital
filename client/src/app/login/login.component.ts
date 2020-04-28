@@ -30,11 +30,17 @@ export class LoginComponent {
     resp.subscribe(data => {
       console.log(data)
       this.message = data;
-     if(data == 'ok' )
-     { this.router.navigate(["admin"])}
-     else{
-       alert('usuario o contraseña mal puesta')
-     }
+      if (data == 'OK ADMIN' ) { 
+       this.router.navigate(["admin"])
+      }
+      else {
+        if (data == 'OK USER') {
+          this.router.navigate(["user"])
+        }
+        else {
+          alert('Usuario o Contraseña mal ingresados')
+        }
+      }
     });
   }
 
