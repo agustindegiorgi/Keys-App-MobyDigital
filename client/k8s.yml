@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: keys-app-front
-          image: mobydigital/keys-app-front:tagname
+          image: mobydigital/keys-app-front:latest
           imagePullPolicy: Always
           #volumeMounts:
           #  - name: landing-tls-vol
