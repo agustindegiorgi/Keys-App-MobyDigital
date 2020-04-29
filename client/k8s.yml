@@ -97,7 +97,7 @@ spec:
     spec:
       containers:
         - name: keys-app-front
-          image: mobydigital/keys-app-front:latest
+          image: mobydigital/keys-app-front:IMAGETAG
           imagePullPolicy: Always
           volumeMounts:
           #  - name: keys-app-front-tls-vol
