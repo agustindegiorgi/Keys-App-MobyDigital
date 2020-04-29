@@ -31,11 +31,15 @@ jobs:
         tags: latest
         workdir: client/
 
-    - name: "Deploy"
-      uses: okteto/actions/deploy@master
+    - name: "Apply K8S Deployment changes"
+      uses: okteto/actions/apply@master
       with:
         namespace: herattis
         manifest: client/k8s.yml
-        tag: keys-app-front:latest
-        waitOn: deployment/keys-app-front
-        registry: mobydigital
+
+    - name: "Push changes"
+      uses: okteto/actions/push@master
+      with:
+        namespace: herattis
+        name: keys-app-front
+        manifest: client/k8s.yml
