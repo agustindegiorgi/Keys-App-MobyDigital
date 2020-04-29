@@ -15,6 +15,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from "./user/user.component";
 import { ListarUserComponent } from './user/lista/listar/listar-user.component';
 import { HomeComponent } from "./home/home.component";
+import { RootComponent } from "./root/root.component";
 import { ListarComponent } from './admin/lista/listar/listar.component';
 import { AddComponent } from './admin/lista/add/add.component';
 import { EditComponent } from './admin/lista/edit/edit.component';
@@ -31,7 +32,8 @@ import { VerDialogUserComponent } from "./user/lista/listar/ver-dialog-user/ver-
     ListarComponent,
     AddComponent,
     EditComponent,
-    HomeComponent
+    HomeComponent,
+    RootComponent
   ],
   entryComponents: [ VerDialogComponent, VerDialogUserComponent ],
   imports: [
@@ -47,7 +49,7 @@ import { VerDialogUserComponent } from "./user/lista/listar/ver-dialog-user/ver-
   providers: [
     PersonaService, //declaro el servicio en providers
     LoginService
-  ], 
-  bootstrap: [HomeComponent]
+  ],
+  bootstrap: [RootComponent]
 })
 export class AppModule { }
