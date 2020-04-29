@@ -12,7 +12,7 @@ export class LoginService {
 
   login(username:string, password:string){
       const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-      return this.http.get("http://localhost:8081?username="+username +"&password="+password,{headers,responseType: 'text' as 'json'})
+      return this.http.get("https://keys-app-mobydigital.herokuapp.com/?username="+username +"&password="+password,{headers,responseType: 'text' as 'json'})
     }
 
 }
