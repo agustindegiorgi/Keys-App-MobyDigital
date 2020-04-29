@@ -11,4 +11,5 @@ INSERT INTO `doors` (`id`, `name`) VALUES ('2', 'cocina');
 INSERT INTO `doors` (`id`, `name`) VALUES ('3', 'entrada');
 INSERT INTO `doors` (`id`, `name`) VALUES ('4', 'porton');
 INSERT INTO `doors` (`id`, `name`) VALUES ('5', 'patio');
+INSERT INTO `admins` (`dni`, `password`) VALUES ('1234', '1234');
 
