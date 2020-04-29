@@ -12,7 +12,7 @@ export class PersonaService {
 
   constructor(private http:HttpClient) { }
 
-  private Url:string="https://keys-app-mobydigital.herokuapp.com/"; //host de backend, la barra '/' sola es el index
+  private Url:string="https://keys-app-mobydigital.herokuapp.com/api"; //host de backend, la barra '/' sola es el index
 
 
   getPersonas():Observable<Persona[]> {
