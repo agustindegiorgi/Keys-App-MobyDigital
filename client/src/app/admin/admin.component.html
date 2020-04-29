@@ -13,29 +13,23 @@
 <body class="bg-dark">
 
   <nav class="navbar bg-dark navbar-dark sticky-top"> <!-- BARRA DE NAVEGACIÓN -->   
-    <a class="navbar-brand navbar-expand-md" href="/login">Cerrar Sesión</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-      </ul>
+    <a class="navbar-brand navbar-expand-md" href="/login">
+      <img src="D:\Users\Agustín\Documents\Trabajos\Moby\Apps\Keys-App-MobyDigital\client\src\app\logo-moby.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Cerrar sesión
+    </a>
+    <div class="home-button">
+      <button mat-icon-button color="primary">
+        <mat-icon>home</mat-icon>
+      </button>
     </div>
   </nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
 <br>
+
 <div class="container container-light jumbotron text-center text-monospaced" style="height:300px"> <!-- INICIO DE PÁGINA -->
   <h2 class="display-3">Moby <small>Digital</small></h2>
   <p>Listado de personas con posesión de llaves de la oficina</p>
 </div> <!-- FIN ** INICIO DE PÁGINA -->
+
  <br>
 <div class="container text-center container-light d-flex justify-content-center"> <!-- LISTADO DE PERSONAS -->  
   <button (click)="Listar()" mat-raised-button color="primary">Listar</button>
