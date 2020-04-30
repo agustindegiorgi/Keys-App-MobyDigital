@@ -1,11 +1,12 @@
 package com.mobydigital.keysapp.backend.app.controller;
 
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -63,24 +64,64 @@ public class KeyRestController {
 	}
 
 	@PostMapping("/key")
-	public Key create(@RequestBody Key key) {
+	public ResponseEntity<?> create(@RequestBody Key key) {
 
-		return keyService.save(key);
+		Key keyNew = null;
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			keyNew = keyService.save(key);
+
+		} catch (DataAccessException e) {
+			response.put("mensaje", "ERROR!,No puede hacer un Insert en la DB");
+			response.put("Error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		return new ResponseEntity<Object>(keyNew, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/key/{id}")
-	public ResponseEntity<Object> deleteByid(@PathVariable Integer id) {
-		keyService.deleteById(id);
+	public ResponseEntity<?> deleteByid(@PathVariable Integer id) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			keyService.deleteById(id);
 
-		return new ResponseEntity<Object>("LLAVE BORRADA", HttpStatus.OK);
+		} catch (DataAccessException e) {
+			response.put("Mensaje", "Error al intentar eliminar la llave en la DB");
+			response.put("Error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		response.put("mensaje", "la llave fue eliminada con extito!");
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
 	@PutMapping("/key/{id}")
-	public Key update(@RequestBody Key key, @PathVariable Integer id) {
+	public ResponseEntity<?> update(@RequestBody Key key, @PathVariable Integer id) {
 		Key currentKey = keyService.findById(id);
-		currentKey.setName(key.getName());
+		Key keyUpdated = null;
+		Map<String, Object> response = new HashMap<>();
 
-		return keyService.save(currentKey);
+		if (currentKey == null) {
+			response.put("mensaje", "No existe esta llave en la DB");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+
+		try {
+			currentKey.setName(key.getName());
+			keyUpdated = keyService.save(currentKey);
+
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error en la DB, no se pudo actualizar la llave");
+			response.put("Error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		response.put("mensaje", "Se actulizo con exito la llave");
+		response.put("Key", keyUpdated);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+
 	}
 
 }

@@ -15,8 +15,17 @@ public class Login implements Serializable {
 	private Integer dni;
 	private Integer password;
 	private String rol;
+	private String username;
 	
 	
+
+	public String getUserName() {
+		return username;
+	}
+
+	public void setUserName(String userName) {
+		this.username = userName;
+	}
 
 	public String getRol() {
 		return rol;

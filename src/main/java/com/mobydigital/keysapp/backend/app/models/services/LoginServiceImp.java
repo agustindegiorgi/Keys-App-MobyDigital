@@ -19,4 +19,10 @@ public class LoginServiceImp implements ILoginService {
 		return adminDao.findById(dni).orElse(null);
 	}
 
+	@Override
+	public Login findByUserName(String username) {
+		
+		return adminDao.findByusername(username);
+	}
+
 }
