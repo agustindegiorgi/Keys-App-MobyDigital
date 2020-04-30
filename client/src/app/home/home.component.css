@@ -1,0 +1,13 @@
+.container {
+    width: 600px;
+    height: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+}
+
+.display-2 {
+    color: #f7444e; /* text color */
+  }
