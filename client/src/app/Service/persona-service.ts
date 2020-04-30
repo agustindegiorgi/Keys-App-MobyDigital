@@ -12,8 +12,8 @@ export class PersonaService {
 
   constructor(private http:HttpClient) { }
   //host de backend, la barra '/' sola es el home//host de backend, la barra '/' sola es el home
-  //private Url:string="https://keys-app-mobydigital.herokuapp.com/api";
-  private Url:string="http://localhost:8081/api";
+  private Url:string="https://keys-app-mobydigital.herokuapp.com/api";
+  //private Url:string="http://localhost:8081/api";
 
   getPersonas():Observable<Persona[]> {
     return this.http.get<Persona[]>(this.Url+"/users"); //obtengo todos los datos de la URL de arriba, que se refiere al backend
