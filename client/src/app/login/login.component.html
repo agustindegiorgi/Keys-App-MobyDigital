@@ -1,30 +1,26 @@
- <!-- Begin Page Content -->
- <div class="container-sm" style="width:490px" id="container">
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-        <!--Primer Fila-->
-        <div class="form-group">
-            <label for="exampleInputEmail1">Usuario (DNI)</label>
-            <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username" formControlName="username"
-            placeholder="00000000" maxlength="8" (keydown)="onKeyDown($event)" (onpaste)="onPaste($event)">
-        </div>
-            <!--Segunda Fila-->
-        <div class="form-group">
-            <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" formControlName="password" maxlength="16">
-        </div>
-        <!--Tercer Fila-->
-        <div class="form-group form-check" style="margin-top: 40px">
-        <div class="row">
-            <div class="col">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="check1">Mantenerme conectado</label>      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <div class="container d-flex align-items-center flex-column justify-content-center h-100 bg-dark text-white" id="container">
+        <h1 class="display-4">Ingresá</h1>
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input class="form-control form-control-lg" placeholder="Usuario" (keydown)="onKeyDown($event)" 
+                (onPaste)="onPaste($event)" formControlName="username" name="username" [(ngModel)]="username" type="text">
             </div>
-            <div class="col"></div>
-            <div class="col-3">
-            <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Ingresar</button> 
+            <div class="form-group">
+                <input class="form-control form-control-lg" name="password" placeholder="Contraseña" 
+                formControlName="password" [(ngModel)]="password" type="password">
             </div>
-        </div>
-        </div>
-    </form>
-</div>
-<!--/ container-->
+            <div class="form-group">
+                <button mat-raised-button style="background-color: #f7444e;" class="button-text" type="submit" (click)="onSubmit()">Vamos!</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
