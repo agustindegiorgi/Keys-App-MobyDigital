@@ -18,11 +18,11 @@ public class UserServiceApplication {
 	@Autowired
 	private ILoginService loginService;
 	
-	
-
 	@GetMapping("/")
 	public String inicio(Integer username, Integer password) {
-        
+	
+	    
+	    
 		Integer dni = username;
 
 		Login login = loginService.findByDni(dni);
@@ -39,4 +39,26 @@ public class UserServiceApplication {
 		return "FAILED";
 
 	}
+	/*
+	@GetMapping("/")
+	public String login(String username, Integer password) {
+     
+	 Login logged= loginService.findByUserName(username);
+	 String userNameDB  = logged.getUserName();
+	 Integer passwordDB = logged.getPassword();
+	 String rolDB       = logged.getRol();
+	 
+	 if ( passwordDB.equals(password)&& rolDB.equals("ADMIN")) {
+		return  "OK ADMIN";
+	}else if (passwordDB.equals(password)&& rolDB.equals("USER")) {
+		
+		return "OK USER";
+	}
+	 
+	
+	 return "FAILED";
+	}*/
+	
+	
+	
 }
