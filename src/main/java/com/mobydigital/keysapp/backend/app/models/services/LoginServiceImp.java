@@ -25,4 +25,18 @@ public class LoginServiceImp implements ILoginService {
 		return adminDao.findByusername(username);
 	}
 
+	@Override
+	public Login save(Login login) {
+		
+		return adminDao.save(login);
+	}
+
+	@Override
+	public void delete(String username) {
+		adminDao.deleteByusername(username);
+		
+	}
+	
+	
+
 }

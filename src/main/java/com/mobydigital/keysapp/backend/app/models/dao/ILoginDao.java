@@ -13,5 +13,7 @@ public interface ILoginDao extends CrudRepository<Login, Integer> {
 
 	Login findByusername(String username);
 
+	void deleteByusername(String username);
+
 	
 }
