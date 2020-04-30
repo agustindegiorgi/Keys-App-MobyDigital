@@ -1,8 +1,11 @@
 package com.mobydigital.keysapp.backend.app.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,40 +29,111 @@ public class DoorRestController {
 	private IDoorService doorService;
 
 	@GetMapping("/doors")
-	public List<Door> list() {
+	public ResponseEntity<?> list() {
 
-		return doorService.findAll();
+		try {
+
+			return new ResponseEntity<Object>(doorService.findAll(), HttpStatus.OK);
+
+		} catch (DataAccessException e) {
+
+			return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
 	}
 
 	@PostMapping("/door")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Door create(@RequestBody Door door) {
+	public ResponseEntity<?> create(@RequestBody Door door) {
 
-		return doorService.save(door);
+		Door doorNew = null;
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			doorNew = doorService.save(door);
+
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "Error al realizar el insert en la DB");
+			response.put("Erro", e.getMessage());
+
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+		return new ResponseEntity<Object>(doorNew, HttpStatus.OK);
+
 	}
 
 	@GetMapping("/door/{id}")
-	public Door findById(@PathVariable Integer id) {
+	public ResponseEntity<?> findById(@PathVariable Integer id) {
+		Door door = null;
 
-		return doorService.findByid(id);
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			door = doorService.findByid(id);
+
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al Realizar la consulta en la DB");
+			response.put("Error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if (door == null) {
+			response.put("mensaje", "No existe esa puerta en la DB");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<Object>(door, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/door/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Integer id) {
-		doorService.deleteById(id);
-		return new ResponseEntity<Object>("PUERTA BORRADA",HttpStatus.OK);
+	public ResponseEntity<?> delete(@PathVariable Integer id) {
+
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			doorService.deleteById(id);
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "Error al relizar delete en la DB");
+			response.put("Error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		response.put("mensaje", "la puerta fue borrada con Exito");
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
 	@PutMapping("/door/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Door upDate(@RequestBody Door door, @PathVariable Integer id) {
-		Door currenDoor = doorService.findByid(id);
+	public ResponseEntity<?> upDate(@RequestBody Door door, @PathVariable Integer id) {
 
-		currenDoor.setName(door.getName());
+		Door currentDoor = doorService.findByid(id);
+		Door doorUpdated = null;
 
-		doorService.save(currenDoor);
+		Map<String, Object> response = new HashMap<>();
 
-		return doorService.save(currenDoor);
+		if (currentDoor == null) {
+			response.put("mensaje", "No se puede editar, la puerta no existe en la DB");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+
+		try {
+			currentDoor.setName(door.getName());
+			doorUpdated = doorService.save(currentDoor);
+
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "Error al querer editar la puerta");
+			response.put("Error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+
+		response.put("mensaje", "La puerta fue actulizada con Exito");
+		response.put("Door", doorUpdated);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+
 	}
 
 }

@@ -1,8 +1,11 @@
 package com.mobydigital.keysapp.backend.app.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,39 +26,61 @@ public class KeyRestController {
 
 	@Autowired
 	private IKeyService keyService;
- ///wrwerwerr
-	@GetMapping("/keys")
-	public List<Key> list() {
 
-		return keyService.findAll();
+	@GetMapping("/keys")
+
+	public ResponseEntity<?> list() {
+
+		try {
+			return new ResponseEntity<Object>(keyService.findAll(), HttpStatus.OK);
+
+		} catch (DataAccessException e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
 	}
 
 	@GetMapping("/key/{id}")
-	public Key findKeyByID(@PathVariable Integer id) {
+	public ResponseEntity<?> findKeyByID(@PathVariable Integer id) {
+		Key key = null;
+		Map<String, Object> response = new HashMap<>();
 
-		return keyService.findById(id);
+		try {
+			key = keyService.findById(id);
+
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "Error al consultar en la DB");
+			response.put("Error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if (key == null) {
+			response.put("mensaje", "La puerta no existe en la DB");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<Object>(key, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/key")
 	public Key create(@RequestBody Key key) {
-		
+
 		return keyService.save(key);
 	}
-	
+
 	@DeleteMapping("/key/{id}")
-	public ResponseEntity<Object> deleteByid(@PathVariable Integer id ) {
+	public ResponseEntity<Object> deleteByid(@PathVariable Integer id) {
 		keyService.deleteById(id);
-		
-		return new ResponseEntity<Object>( "LLAVE BORRADA", HttpStatus.OK);
+
+		return new ResponseEntity<Object>("LLAVE BORRADA", HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/key/{id}")
-	public Key update(@RequestBody Key key,@PathVariable Integer id ) {
-		Key currentKey= keyService.findById(id);
+	public Key update(@RequestBody Key key, @PathVariable Integer id) {
+		Key currentKey = keyService.findById(id);
 		currentKey.setName(key.getName());
-		
+
 		return keyService.save(currentKey);
 	}
-	
 
 }

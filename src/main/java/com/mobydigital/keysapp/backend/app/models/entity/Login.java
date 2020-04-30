@@ -8,12 +8,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "admins")
-public class Admins implements Serializable {
+@Table(name = "login")
+public class Login implements Serializable {
    
 	@Id
 	private Integer dni;
 	private Integer password;
+	private String rol;
+	
+	
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 
 	public Integer getDni() {
 		return dni;
