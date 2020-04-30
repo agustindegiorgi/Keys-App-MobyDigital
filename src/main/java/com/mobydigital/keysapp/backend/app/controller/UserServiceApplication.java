@@ -21,9 +21,10 @@ public class UserServiceApplication {
 	@GetMapping("/")
 	public String inicio(Integer username, Integer password) {
 	
-	    
+	   
 	    
 		Integer dni = username;
+		
 
 		Login login = loginService.findByDni(dni);
 
