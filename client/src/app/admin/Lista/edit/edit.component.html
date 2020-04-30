@@ -1,19 +1,55 @@
-<div class="container col-md-6">
+<nav class="navbar navbar-dark sticky-top" style="background-color: #f7444e;"> <!-- BARRA DE NAVEGACIÓN -->   
+  <a class="navbar-brand" href="/login">  
+      Cerrar sesión
+  </a>
+  <!-- <a class="navbar-brand" href="/home">
+      <img src="../../assets/images/logomobygrande.png" style="max-height: 30px;" alt="MOBYDIGITAL"/>
+  </a> -->
+  <a href="/admin">
+      <div class="home-button">
+          <button mat-icon-button>
+          <mat-icon>home</mat-icon>
+          </button>
+      </div>
+  </a>
+</nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
+
+<br><br>
+
+<div class="container col-md-6 d-flex align-items-center flex-column justify-content-center 
+h-100 bg-dark">
     <div class="card">
       <div class="card-header">
         <h3>Modificar Datos</h3>
       </div>
       <div class="card-body bg-light rounded">
-        <form action="">
-          <div class="form-group">
-            <label for="">Email:</label>
-            <input [(ngModel)]="persona.email" name="mail" type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="">Teléfono:</label>
-            <input [(ngModel)]="persona.telephone" name="telephone" type="text" class="form-control">
-          </div>
-          <button (click)="Actualizar(persona)" class="btn btn-danger">Actualizar</button>
+        <div class="card-body bg-light rounded">
+          <form action="">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputName">Nombre/s</label>
+                <input [(ngModel)]="persona.name" name ="name" maxlength="30" type="text" class="form-control" id="inputName" placeholder="Nombre/s">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputLastname">Apellido/s</label>
+                <input [(ngModel)]="persona.lastname" name ="lastname" maxlength="30" type="text" class="form-control" id="inputLastname" placeholder="Apellido/s">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inpute-Mail">e-Mail</label>
+              <input [(ngModel)]="persona.email" name= "email" maxlength="30" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="inputPhone">Número de teléfono</label>
+              <input [(ngModel)]="persona.telephone" name= "telephone" maxlength="20" type="text" class="form-control" id="inputPhone" placeholder="000 0000000">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputDNI">DNI</label>
+                <input [(ngModel)]="persona.dni"  name ="dni" maxlength="8" type="text" class="form-control" id="inputDNI" placeholder="00000000">
+              </div>
+            </div>
+          <button (click)="Actualizar(persona)" mat-raised-button color="warn">Actualizar</button>
         </form>
       </div>
     </div>

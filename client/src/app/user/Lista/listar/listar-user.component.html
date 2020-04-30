@@ -1,9 +1,26 @@
+<nav class="navbar navbar-dark sticky-top" style="background-color: #f7444e;"> <!-- BARRA DE NAVEGACIÓN -->   
+    <a class="navbar-brand" href="/login">  
+        Cerrar sesión
+    </a>
+    <!-- <a class="navbar-brand" href="/home">
+        <img src="../../assets/images/logomobygrande.png" style="max-height: 30px;" alt="MOBYDIGITAL"/>
+    </a> -->
+    <a href="/user">
+        <div class="home-button">
+            <button mat-icon-button>
+            <mat-icon>home</mat-icon>
+            </button>
+        </div>
+    </a>
+  </nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
+
+<br><br>
+
 <div class="container container-light">
     <div class="card">
         <h3>Personas</h3>
     </div>
     <div class="card-body" data-spy="scroll">
-
         <table class="table table-hover table-light">
             <thead>
                 <tr class="text-center">
@@ -25,8 +42,6 @@
                     <td><button mat-raised-button (click)="openDialog()"
                                 matTooltip="Mirá las llaves!"
                                 aria-label="Button that displays a tooltip when focused or hovered over">VER</button></td>
-                    <td>
-                    </td>
                 </tr>
             </tbody>
         </table>

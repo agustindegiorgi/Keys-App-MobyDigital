@@ -1,0 +1,13 @@
+.home-button {
+    color: #FFFFFF; /* home color */
+}
+
+.container {
+    width: 600px;
+    height: 350px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+}

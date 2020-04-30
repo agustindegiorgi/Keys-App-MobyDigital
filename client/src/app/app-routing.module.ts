@@ -6,10 +6,10 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 
-import { ListarComponent } from './admin/lista/listar/listar.component';
-import { ListarUserComponent } from './user/lista/listar/listar-user.component'
-import { AddComponent } from './admin/lista/add/add.component';
-import { EditComponent } from './admin/lista/edit/edit.component';
+import { ListarComponent } from './admin/Lista/listar/listar.component';
+import { ListarUserComponent } from './user/Lista/listar/listar-user.component'
+import { AddComponent } from './admin/Lista/add/add.component';
+import { EditComponent } from './admin/Lista/edit/edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

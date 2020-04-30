@@ -44,4 +44,8 @@ export class ListarComponent {
     this.dialog.open(VerDialogComponent); 
   }
 
+  Nuevo() {
+    this.router.navigate(["add"]);
+   }
+   
 } //end class
