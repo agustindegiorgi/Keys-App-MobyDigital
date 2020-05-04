@@ -32,10 +32,14 @@ public class UserServiceApplication {
 	@GetMapping("/")
 	public String login(String username, Integer password) {
      
+		System.out.println(username +" "+password );
 	 Login logged= loginService.findByUserName(username);
 	 String userNameDB  = logged.getUserName();
 	 Integer passwordDB = logged.getPassword();
 	 String rolDB       = logged.getRol();
+	  
+	 
+	 System.out.println("el nombre encontrado en la db  "+logged.getUserName());
 	 
 	 if ( passwordDB.equals(password)&& rolDB.equals("ADMIN")) {
 		return  "OK ADMIN";
