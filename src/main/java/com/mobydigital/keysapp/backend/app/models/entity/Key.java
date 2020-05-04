@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="keys")
+@Table(name="keysdoor")
 public class Key implements Serializable {
 
 
