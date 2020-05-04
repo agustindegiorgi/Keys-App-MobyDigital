@@ -30,29 +30,6 @@ public class UserServiceApplication {
 	private ILoginService loginService;
 	
 	@GetMapping("/")
-	public String inicio(Integer username, Integer password) {
-	
-	   
-	    
-		Integer dni = username;
-		
-
-		Login login = loginService.findByDni(dni);
-
-		if (login.getPassword().equals(password) && login.getRol().equals("ADMIN")) {
-
-			return "OK ADMIN";
-
-		} else if (login.getPassword().equals(password) && login.getRol().equals("USER")) {
-
-			return "OK USER";
-
-		}
-		return "FAILED";
-
-	}
-	/*
-	@GetMapping("/")
 	public String login(String username, Integer password) {
      
 	 Login logged= loginService.findByUserName(username);
@@ -69,7 +46,8 @@ public class UserServiceApplication {
 	 
 	
 	 return "FAILED";
-	}*/
+	}
+	
 	@PostMapping("/login")
 	public ResponseEntity<?> create (@RequestBody Login login){
 		Login loginNew =null;
