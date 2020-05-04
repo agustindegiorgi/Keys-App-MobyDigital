@@ -14,8 +14,8 @@ INSERT INTO `doors` (`id`, `name`) VALUES (`2`, `cocina`);
 INSERT INTO `doors` (`id`, `name`) VALUES (`3`, `entrada`);
 INSERT INTO `doors` (`id`, `name`) VALUES (`4`, `porton`);
 INSERT INTO `doors` (`id`, `name`) VALUES (`5`, `patio`);
-INSERT INTO `login` (`dni`,`username`, `password`,`rol`) VALUES (`34455700`, `norberto`, `1234`, `ADMIN`);
-INSERT INTO `login` (`dni`,`username`, `password`,`rol`) VALUES (`34455701`, `agustin`, `1111`, `ADMIN`);
-INSERT INTO `login` (`dni`,`username`, `password`,`rol`) VALUES (`34455702`, `gabriel`, `2222`, `USER`);
+INSERT INTO `login` (`dni`, `username`, `password`, `rol`) VALUES (`34455700`, `norberto`, `1234`, `ADMIN`);
+INSERT INTO `login` (`dni`, `username`, `password`, `rol`) VALUES (`34455701`, `agustin`, `1111`, `ADMIN`);
+INSERT INTO `login` (`dni`, `username`, `password`, `rol`) VALUES (`34455702`, `gabriel`, `2222`, `USER`);
 
 ;
