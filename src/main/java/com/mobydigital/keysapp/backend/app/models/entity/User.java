@@ -1,10 +1,14 @@
 package com.mobydigital.keysapp.backend.app.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +23,13 @@ public class User implements Serializable {
 	@Column(nullable = false)
 	private String lastname;
 	private String email;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Key> keys;
+
+	public List<Key> getKey() {
+		return keys;
+	}
 
 	public Integer getDni() {
 		return dni;
