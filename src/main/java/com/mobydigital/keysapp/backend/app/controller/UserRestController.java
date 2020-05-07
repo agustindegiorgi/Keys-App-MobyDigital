@@ -81,7 +81,7 @@ public class UserRestController {
 			userNew = userService.save(user);
 
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al realizar el insert en la DB");
+			response.put("mensaje", "Error al querer agregar un usuario a la DB");
 			response.put("error", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}

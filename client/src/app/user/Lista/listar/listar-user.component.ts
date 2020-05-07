@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonaService } from "../../../Service/persona-service";
+import { PersonaService } from "../../../Service/persona.service";
 import { Persona } from 'src/app/Modelo/Persona';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { VerDialogUserComponent } from './ver-dialog-user/ver-dialog-user.component';
 
 @Component({
@@ -12,11 +12,14 @@ import { VerDialogUserComponent } from './ver-dialog-user/ver-dialog-user.compon
 })
 
 export class ListarUserComponent {
+  
+  constructor(
+              private service:PersonaService,
+              private router:Router,
+              public dialog: MatDialog
+              ) {}
+
   personas: Persona[]; //lista de personas vacía
-  constructor(private service:PersonaService, private router:Router, public dialog: MatDialog) {
-
-  }
-
   ngOnInit(): void {
     //acá trabajo el método Listar
     this.service.getPersonas()
@@ -26,7 +29,11 @@ export class ListarUserComponent {
   }
 
   openDialog() {
-    this.dialog.open(VerDialogUserComponent); 
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(VerDialogUserComponent, dialogConfig); 
   }
 
 } //end class

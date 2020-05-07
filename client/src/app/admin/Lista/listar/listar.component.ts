@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonaService } from "../../../Service/persona-service";
+import { PersonaService } from "../../../Service/persona.service";
 import { Persona } from 'src/app/Modelo/Persona';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { VerDialogComponent } from './ver-dialog/ver-dialog.component';
+import { AddComponent } from '../add/add.component';
+import { NotificationService } from "../../../Service/notification.service";
 
 @Component({
   selector: 'app-listar',
@@ -13,9 +15,12 @@ import { VerDialogComponent } from './ver-dialog/ver-dialog.component';
 
 export class ListarComponent {
   personas: Persona[]; //lista de personas vacía
-  constructor(private service:PersonaService, private router:Router, public dialog: MatDialog) {
-
-  }
+  constructor(
+              private service:PersonaService, 
+              private router:Router, 
+              public dialog: MatDialog,
+              public notificationService: NotificationService
+              ) {}
 
   ngOnInit(): void {
     //acá trabajo el método Listar
@@ -36,16 +41,25 @@ export class ListarComponent {
     this.service.deletePersona(persona)
     .subscribe(()=>{
       this.personas=this.personas.filter(p=>p!==persona);
-      alert("Usuario eliminado...");
+      this.notificationService.successDelete(':: Se eliminó correctamente');
     })
   }
 
   openDialog() {
-    this.dialog.open(VerDialogComponent); 
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "40%";
+    this.dialog.open(VerDialogComponent, dialogConfig); 
   }
 
   Nuevo() {
-    this.router.navigate(["add"]);
+    this.service.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "40%";
+    this.dialog.open(AddComponent, dialogConfig);
    }
    
 } //end class
