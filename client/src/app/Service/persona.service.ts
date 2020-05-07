@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Persona } from "../Modelo/Persona";
 import { Observable } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Injectable({
@@ -17,7 +18,6 @@ export class PersonaService {
 
   getPersonas():Observable<Persona[]> {
     return this.http.get<Persona[]>(this.Url+"/users"); //obtengo todos los datos de la URL de arriba, que se refiere al backend
-    
   }
 
   createPersona(persona:Persona) {
@@ -34,5 +34,25 @@ export class PersonaService {
 
   deletePersona(persona:Persona){
     return this.http.delete(this.Url+"/user/"+persona.dni);
+  }
+
+  form: FormGroup = new FormGroup({
+    dni: new FormControl(),
+    name: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.email),
+    telephone: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    keysdoor: new FormControl('', Validators.required)
+  });
+
+  initializeFormGroup() {
+    this.form.setValue({
+    dni: null,
+    name: '',
+    lastname: '',
+    email: '',
+    telephone: '',
+    keysdoor: '',
+    });
   }
 }

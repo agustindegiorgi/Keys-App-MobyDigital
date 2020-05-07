@@ -50,7 +50,9 @@
                                 aria-label="Button that displays a tooltip when focused or hovered over">VER</button></td>
                     <td>
                         <button mat-raised-button color="accent" (click)="Editar(persona)">Editar</button>
-                        <button mat-raised-button color="warn" (click)="Delete(persona)" style="margin-left: 10px;">Eliminar</button>
+                        <button mat-raised-button color="warn" (click)="Delete(persona)" style="margin-left: 10px;">
+                            <mat-icon class="delete">delete</mat-icon>
+                        </button>
                     </td>
                 </tr>
             </tbody>

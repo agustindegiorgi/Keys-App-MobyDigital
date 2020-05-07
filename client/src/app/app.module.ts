@@ -19,7 +19,7 @@ import { RootComponent } from "./root/root.component";
 import { ListarComponent } from './admin/Lista/listar/listar.component';
 import { AddComponent } from './admin/Lista/add/add.component';
 import { EditComponent } from './admin/Lista/edit/edit.component';
-import { PersonaService } from "./Service/persona-service";
+import { PersonaService } from "./Service/persona.service";
 import { VerDialogComponent } from "./admin/Lista/listar/ver-dialog/ver-dialog.component";
 import { VerDialogUserComponent } from "./user/Lista/listar/ver-dialog-user/ver-dialog-user.component";
 
