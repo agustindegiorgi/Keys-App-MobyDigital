@@ -36,7 +36,7 @@ export class AddComponent implements OnInit {
 
   onSubmit() {
     this.service.createPersona(this.persona)
-    .subscribe(data=> {
+    .subscribe(data => {
     this.service.form.reset();
     this.service.initializeFormGroup();
     this.notificationService.success(':: Se agregó correctamente');
@@ -48,7 +48,12 @@ export class AddComponent implements OnInit {
     this.service.form.reset();
     this.service.initializeFormGroup();
     this.dialogRef.close();
-    this.router.navigate(["listar"]);
+    this.redirectTo('listar');
   }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 
 }

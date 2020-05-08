@@ -35,7 +35,11 @@ import { VerDialogUserComponent } from "./user/Lista/listar/ver-dialog-user/ver-
     HomeComponent,
     RootComponent
   ],
-  entryComponents: [ VerDialogComponent, VerDialogUserComponent ],
+  entryComponents: [
+                    VerDialogComponent, 
+                    VerDialogUserComponent,
+                    AddComponent 
+                    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
