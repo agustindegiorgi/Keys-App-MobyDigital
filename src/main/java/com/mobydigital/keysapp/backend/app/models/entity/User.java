@@ -30,6 +30,9 @@ public class User implements Serializable {
 	public List<Key> getKey() {
 		return keys;
 	}
+	public void setKeys(List<Key> keys) {
+		this.keys = keys;
+	}
 
 	public Integer getDni() {
 		return dni;
