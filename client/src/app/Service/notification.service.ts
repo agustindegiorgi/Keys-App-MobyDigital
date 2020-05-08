@@ -14,11 +14,13 @@ export class NotificationService {
     verticalPosition: 'bottom'
   }
 
+  //NOTIFICACIÓN CUANDO AGREGAS A UNA PERSONA A LA LISTA
   success(msg) {
     this.config['panelClass'] = ['notification', 'success'];
     this.snackBar.open(msg, '', this.config);
   }
   
+  //NOTIFICACIÓN CUANDO ELIMINAS A UNA PERSONA DE LA LISTA
   successDelete(msg) {
     this.config['panelClass'] = ['notification', 'success'];
     this.snackBar.open(msg, '', this.config);
