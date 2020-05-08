@@ -4,5 +4,5 @@ export class Persona {
     lastname: string;
     telephone: string;
     email: string;
-    keysdoor: [];
+    key: [];
 }
