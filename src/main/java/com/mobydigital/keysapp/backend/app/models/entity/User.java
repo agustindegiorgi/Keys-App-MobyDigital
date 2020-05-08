@@ -27,9 +27,12 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Key> keys;
 
-	public List<Key> getKey() {
+	
+
+	public List<Key> getKeys() {
 		return keys;
 	}
+
 	public void setKeys(List<Key> keys) {
 		this.keys = keys;
 	}
