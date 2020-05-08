@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PersonaService } from 'src/app/Service/persona.service';
 import { Persona } from 'src/app/Modelo/Persona';
+import { FormControl } from '@angular/forms';
+import { MatDialogRef, MatDialog } from "@angular/material/dialog";
+import { NotificationService } from "../../../Service/notification.service";
 
 @Component({
   selector: 'app-edit',
@@ -12,13 +15,22 @@ import { Persona } from 'src/app/Modelo/Persona';
 export class EditComponent implements OnInit {
 
   persona:Persona = new Persona();
-  constructor(private router:Router,private service:PersonaService) { }
+  constructor(
+    private router: Router, 
+    public service: PersonaService,
+    public dialogRef: MatDialogRef<EditComponent>,
+    public notificationService: NotificationService 
+    ) { }
 
   ngOnInit() {
-    this.Editar();
+    this.onEdit();
   }
 
-  Editar(){
+  keysdoors = new FormControl();
+
+  keysdoorList: string[] = ['Puerta central', 'Puerta cocina', 'Portón'];
+
+  onEdit(){
     let dni=localStorage.getItem("dni");
     this.service.getPersonaDni(+dni)
     .subscribe(data=>{
@@ -26,13 +38,30 @@ export class EditComponent implements OnInit {
     })
   }
   
-  Actualizar(persona:Persona){
+  onUpdate(persona:Persona){
     this.service.updatePersona(persona)
-    .subscribe(data=>{
+    .subscribe(data => {
       this.persona=data as any;
-      alert("Actualizado exitosamente!");
-      this.router.navigate(["listar"]);
+      this.notificationService.successUpdate(':: Se actualizó correctamente');
+      this.onClose();
     })
+  }
+
+  onClose() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.dialogRef.close();
+    this.redirectTo('listar');
+  }
+
+  onClear() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
   }
 
 }

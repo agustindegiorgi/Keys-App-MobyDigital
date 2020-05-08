@@ -30,7 +30,7 @@ export class PersonaService {
 
   updatePersona(persona:Persona){
     return this.http.put(this.Url+"/user/"+persona.dni,persona);
-  } //borré el <Persona>, es decir el template, porque eso es "a este objeto lo casteo", casteo es 
+  } //borré el <Persona>, es decir el template, porque eso es "a este objeto lo casteo"-
 
   deletePersona(persona:Persona){
     return this.http.delete(this.Url+"/user/"+persona.dni);

@@ -25,4 +25,10 @@ export class NotificationService {
     this.config['panelClass'] = ['notification', 'success'];
     this.snackBar.open(msg, '', this.config);
   }
+
+  //NOTIFICACIÓN CUANDO ELIMINAS A UNA PERSONA DE LA LISTA
+  successUpdate(msg) {
+    this.config['panelClass'] = ['notification', 'success'];
+    this.snackBar.open(msg, '', this.config);
+  }
 }

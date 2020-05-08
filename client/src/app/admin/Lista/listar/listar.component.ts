@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { VerDialogComponent } from './ver-dialog/ver-dialog.component';
 import { AddComponent } from '../add/add.component';
 import { NotificationService } from "../../../Service/notification.service";
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-listar',
@@ -34,7 +35,11 @@ export class ListarComponent {
   {
     console.log(persona)
     localStorage.setItem("dni",persona.dni.toString());
-    this.router.navigate(["edit"]);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "40%";
+    this.dialog.open(EditComponent, dialogConfig);
   }
 
   Delete(persona:Persona){

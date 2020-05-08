@@ -13,6 +13,11 @@ snack-bar-container.successDelete {
     color: #ffffff;
 }
 
+snack-bar-container.successUpdate {
+    background-color: #5cb85c;
+    color: #ffffff;  
+}
+
 snack-bar-container.notification simple-snack-bar {
     font-size: 18px !important;
     font-weight: bold;
