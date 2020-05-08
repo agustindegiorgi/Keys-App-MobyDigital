@@ -1,21 +1,74 @@
-<nav class="navbar navbar-dark sticky-top" style="background-color: #f7444e;"> <!-- BARRA DE NAVEGACIÓN -->   
-  <a class="navbar-brand" href="/login">  
-      Cerrar sesión
-  </a>
-  <!-- <a class="navbar-brand" href="/home">
-      <img src="../../assets/images/logomobygrande.png" style="max-height: 30px;" alt="MOBYDIGITAL"/>
-  </a> -->
-  <a href="/admin">
-      <div class="home-button">
-          <button mat-icon-button>
-          <mat-icon>home</mat-icon>
-          </button>
-      </div>
-  </a>
-</nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
-
-<br><br>
-
+<mat-toolbar>
+  <span class="fill-remaining-space">Nuevo Moby Digimon!</span>
+  <span class="spacer"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+   <mat-icon>clear</mat-icon> 
+  </button>
+</mat-toolbar>
+<div class="container">
+<form [formGroup]="service.form" npm class="normal-form">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile> <!-- PRIMER FILA -->
+        <div class="controler-container">
+            <input type="hidden" formControlName="dni">
+            <mat-form-field>
+                <mat-label>Ingresá el nombre</mat-label>
+                <input formControlName="name" [(ngModel)]="persona.name" name ="name"
+                  matInput placeholder="¿Cuál es el nombre?" required> <!--SIEMPRE se le agrega matInput-->
+                <mat-error>Faltó rellenar el campo.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Ingresá el apellido</mat-label>
+                <input formControlName="lastname" [(ngModel)]="persona.lastname" name ="lastname"
+                  matInput placeholder="¿Cuál es el apellido?" required> <!--SIEMPRE se le agrega matInput-->
+                <mat-error>Faltó rellenar el campo.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Agregá su e-Mail</mat-label>
+                <input formControlName="email" [(ngModel)]="persona.email" name ="email"
+                  matInput placeholder="Ej: tunombre@mobydigital.com" required>
+                <mat-error>Che, este mail no es válido.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Añadí su teléfono o celular</mat-label>
+                <input formControlName="telephone" [(ngModel)]="persona.telephone" name ="telephone"
+                  matInput placeholder="Agregá su número de teléfono" required> <!--SIEMPRE se le agrega matInput-->
+                <mat-error *ngIf="service.form.controls['telephone'].errors?.required">Faltó rellenar el campo.</mat-error>
+                <mat-error *ngIf="service.form.controls['telephone'].errors?.minlength">Mínimo 8 caracteres.</mat-error>
+            </mat-form-field>
+        </div>    
+        </mat-grid-tile>
+        <mat-grid-tile> <!-- SEGUNDA FILA -->
+        <div class="controler-container">
+            <mat-form-field>
+              <mat-label>Añadí su dni</mat-label>
+                <input formControlName="dni" [(ngModel)]="persona.dni" name ="dni"
+                  matInput placeholder="Agregá su DNI" maxlength="8" required> <!--SIEMPRE se le agrega matInput-->
+                <mat-error *ngIf="service.form.controls['dni'].errors?.required">Faltó rellenar el campo.</mat-error>
+                <mat-error *ngIf="service.form.controls['dni'].errors?.minlength">8 caracteres.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Llaves</mat-label>
+                <mat-select formControlName="keysdoor" name ="keysdoor" multiple required>
+                <mat-select-trigger>
+                    {{service.form.controls['keysdoor'].value ? service.form.controls['keysdoor'].value[0] : ''}}
+                    <span *ngIf="service.form.controls['keysdoor'].value?.length > 1" class="seleccion-llave">
+                    (+{{service.form.controls['keysdoor'].value.length - 1}} {{service.form.controls['keysdoor'].value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let keysdoor of keysdoorList" [value]="keysdoor">{{keysdoor}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" (click)="onUpdate(persona)" [disabled]="service.form.invalid">Enviar</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Borrar</button>
+                </div>
+        </div>
+        </mat-grid-tile> <!--FIN SEGUNDA FILA-->
+    </mat-grid-list> <!--FIN LISTADO DE FORMULARIO-->
+</form>
+</div>
+<!--
 <div class="container col-md-6 d-flex align-items-center flex-column justify-content-center 
 h-100 bg-dark">
     <div class="card">
@@ -54,3 +107,4 @@ h-100 bg-dark">
       </div>
     </div>
   </div>
+-->

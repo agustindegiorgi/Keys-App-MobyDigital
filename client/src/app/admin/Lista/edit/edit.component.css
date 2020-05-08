@@ -1,13 +1,31 @@
-.home-button {
-    color: #FFFFFF; /* home color */
+form.normal-form {
+    margin: 15px;
+    margin-left: 10px;
+}
+
+.seleccion-llave {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.button-row button{
+  margin: 5px;
 }
 
 .container {
-    width: 600px;
-    height: 350px;
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: inline-flex;
+    width: 480px;
+    height: 300px;
+}
+
+/* ESPACIADO EN TOOLBAR */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* BOTÓN DE CIERRE */
+.btn-dialog-close {
+  width: 45px;
+  min-width: 0px !important;
+  height: 40px;
+  padding: 0px !important;
 }

@@ -51,9 +51,9 @@ export class AddComponent implements OnInit {
     this.redirectTo('listar');
   }
 
-  redirectTo(uri:string){
+    redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));
- }
+  }
 
 }
