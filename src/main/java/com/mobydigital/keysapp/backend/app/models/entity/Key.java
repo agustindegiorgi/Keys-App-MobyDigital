@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +17,13 @@ public class Key implements Serializable {
 	@Id
 	private Integer id;
 	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name = "dni")
+	private User user;
+
+	
+	
 	
 	public Integer getId() {
 		return id;
