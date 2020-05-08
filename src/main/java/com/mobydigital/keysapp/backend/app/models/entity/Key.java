@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="keysdoor")
 public class Key implements Serializable {
@@ -20,11 +22,15 @@ public class Key implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "dni")
+	@JsonIgnore
 	private User user;
 
-	
-	
-	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Integer getId() {
 		return id;
 	}
