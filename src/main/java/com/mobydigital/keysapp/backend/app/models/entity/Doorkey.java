@@ -11,8 +11,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="keysdoor")
-public class Key implements Serializable {
+@Table(name="doorkeys")
+public class Doorkey implements Serializable {
 
 
 	

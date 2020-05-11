@@ -18,22 +18,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mobydigital.keysapp.backend.app.models.entity.Key;
-import com.mobydigital.keysapp.backend.app.models.services.IKeyService;
+import com.mobydigital.keysapp.backend.app.models.entity.Doorkey;
+import com.mobydigital.keysapp.backend.app.models.services.IDoorkeyService;
+
 
 @RestController
 @RequestMapping("/api")
-public class KeyRestController {
+public class DoorkeyRestController {
 
 	@Autowired
-	private IKeyService keyService;
+	private IDoorkeyService doorkeyService;
 
-	@GetMapping("/keys")
+	@GetMapping("/doorkeys")
 
 	public ResponseEntity<?> list() {
 
 		try {
-			return new ResponseEntity<Object>(keyService.findAll(), HttpStatus.OK);
+			return new ResponseEntity<Object>(doorkeyService.findAll(), HttpStatus.OK);
 
 		} catch (DataAccessException e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -41,13 +42,13 @@ public class KeyRestController {
 
 	}
 
-	@GetMapping("/key/{id}")
+	@GetMapping("/doorkey/{id}")
 	public ResponseEntity<?> findKeyByID(@PathVariable Integer id) {
-		Key key = null;
+		Doorkey doorkey = null;
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			key = keyService.findById(id);
+			doorkey = doorkeyService.findById(id);
 
 		} catch (DataAccessException e) {
 
@@ -55,22 +56,22 @@ public class KeyRestController {
 			response.put("Error", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (key == null) {
+		if (doorkey == null) {
 			response.put("mensaje", "La puerta no existe en la DB");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity<Object>(key, HttpStatus.OK);
+		return new ResponseEntity<Object>(doorkey, HttpStatus.OK);
 	}
 
-	@PostMapping("/key")
-	public ResponseEntity<?> create(@RequestBody Key key) {
+	@PostMapping("/doorkey")
+	public ResponseEntity<?> create(@RequestBody Doorkey doorkey) {
 
-		Key keyNew = null;
+		Doorkey doorkeyNew = null;
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			keyNew = keyService.save(key);
+			doorkeyNew = doorkeyService.save(doorkey);
 
 		} catch (DataAccessException e) {
 			response.put("mensaje", "ERROR!,No puede hacer un Insert en la DB");
@@ -78,14 +79,14 @@ public class KeyRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		return new ResponseEntity<Object>(keyNew, HttpStatus.OK);
+		return new ResponseEntity<Object>(doorkeyNew, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/key/{id}")
+	@DeleteMapping("/doorkey/{id}")
 	public ResponseEntity<?> deleteByid(@PathVariable Integer id) {
 		Map<String, Object> response = new HashMap<>();
 		try {
-			keyService.deleteById(id);
+			doorkeyService.deleteById(id);
 
 		} catch (DataAccessException e) {
 			response.put("Mensaje", "Error al intentar eliminar la llave en la DB");
@@ -97,20 +98,20 @@ public class KeyRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
-	@PutMapping("/key/{id}")
-	public ResponseEntity<?> update(@RequestBody Key key, @PathVariable Integer id) {
-		Key currentKey = keyService.findById(id);
-		Key keyUpdated = null;
+	@PutMapping("/doorkey/{id}")
+	public ResponseEntity<?> update(@RequestBody Doorkey doorkey, @PathVariable Integer id) {
+		Doorkey currentDoorKey = doorkeyService.findById(id);
+		Doorkey doorkeyUpdated = null;
 		Map<String, Object> response = new HashMap<>();
 
-		if (currentKey == null) {
+		if (currentDoorKey == null) {
 			response.put("mensaje", "No existe esta llave en la DB");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
 		try {
-			currentKey.setName(key.getName());
-			keyUpdated = keyService.save(currentKey);
+			currentDoorKey.setName(doorkey.getName());
+			doorkeyUpdated = doorkeyService.save(currentDoorKey);
 
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error en la DB, no se pudo actualizar la llave");
@@ -119,7 +120,7 @@ public class KeyRestController {
 		}
 
 		response.put("mensaje", "Se actulizo con exito la llave");
-		response.put("Key", keyUpdated);
+		response.put("DoorKey", doorkeyUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 
 	}

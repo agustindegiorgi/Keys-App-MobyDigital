@@ -25,16 +25,18 @@ public class User implements Serializable {
 	private String email;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Key> keys;
+	private List<Doorkey> doorkeys;
 
 	
 
-	public List<Key> getKeys() {
-		return keys;
+	
+
+	public List<Doorkey> getDoorkeys() {
+		return doorkeys;
 	}
 
-	public void setKeys(List<Key> keys) {
-		this.keys = keys;
+	public void setDoorkeys(List<Doorkey> doorkeys) {
+		this.doorkeys = doorkeys;
 	}
 
 	public Integer getDni() {
