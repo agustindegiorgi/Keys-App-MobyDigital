@@ -17,10 +17,14 @@
 <br><br>
 
 <div class="container container-light">
-    <div class="card">
-        <h3>Personas</h3>
-    </div>
-    <div class="card-body" data-spy="scroll">
+    
+    <mat-toolbar>
+        <span class="fill-remaining-space">
+            Listado de Moby
+        </span>
+    </mat-toolbar>
+
+    <div class="body">
         <table class="table table-hover table-light">
             <thead>
                 <tr class="text-center">
@@ -31,8 +35,8 @@
                     <th>TELEFONO</th>
                     <th>LLAVES</th>
                     <th>
-                        <button (click)="Nuevo()" mat-icon-button style="margin-left: 10px;" style="color: black;">
-                            Agregar
+                        <button (click)="Nuevo()" mat-mini-fab matTooltip="Agregá un Moby Digimon!" 
+                                matTooltipPosition="above" color="classic">
                             <mat-icon>open_in_new</mat-icon>
                         </button>
                     </th>
@@ -47,7 +51,7 @@
                     <td>{{persona.telephone}}</td>
                     <td><button mat-raised-button (click)="openDialog()"
                                 matTooltip="Mirá las llaves!"
-                                aria-label="Button that displays a tooltip when focused or hovered over">VER</button></td>
+                                aria-label="Botón que muestra un texto cuando posicionas el mouse encima">VER</button></td>
                     <td>
                         <button mat-raised-button color="accent" (click)="Editar(persona)">Editar</button>
                         <button mat-raised-button color="warn" (click)="Delete(persona)" style="margin-left: 10px;">
@@ -57,5 +61,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> <!-- FIN DIV LISTA -->
 </div>

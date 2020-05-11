@@ -26,9 +26,9 @@ export class EditComponent implements OnInit {
     this.onEdit();
   }
 
-  keysdoors = new FormControl();
+  doorkeys = new FormControl();
 
-  keysdoorList: string[] = ['Puerta central', 'Puerta cocina', 'Portón'];
+  doorkeysList: string[] = ['Puerta central', 'Puerta cocina', 'Portón'];
 
   onEdit(){
     let dni=localStorage.getItem("dni");

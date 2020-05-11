@@ -33,13 +33,16 @@ import { VerDialogUserComponent } from "./user/Lista/listar/ver-dialog-user/ver-
     AddComponent,
     EditComponent,
     HomeComponent,
-    RootComponent
+    RootComponent,
+    VerDialogComponent,
+    VerDialogUserComponent
   ],
   entryComponents: [
-                    VerDialogComponent, 
-                    VerDialogUserComponent,
-                    AddComponent 
-                    ],
+    VerDialogComponent, 
+    VerDialogUserComponent,
+    AddComponent,
+    EditComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,4 +59,5 @@ import { VerDialogUserComponent } from "./user/Lista/listar/ver-dialog-user/ver-
   ],
   bootstrap: [RootComponent]
 })
+
 export class AppModule { }

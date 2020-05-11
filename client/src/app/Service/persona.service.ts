@@ -24,15 +24,15 @@ export class PersonaService {
     return this.http.post<Persona>(this.Url+"/user",persona);
   }
 
-  getPersonaDni(dni:number){
+  getPersonaDni(dni:number) {
     return this.http.get<Persona>(this.Url+"/user/"+dni);
   }
 
-  updatePersona(persona:Persona){
+  updatePersona(persona:Persona) {
     return this.http.put(this.Url+"/user/"+persona.dni,persona);
   } //borré el <Persona>, es decir el template, porque eso es "a este objeto lo casteo"-
 
-  deletePersona(persona:Persona){
+  deletePersona(persona:Persona) {
     return this.http.delete(this.Url+"/user/"+persona.dni);
   }
 
@@ -42,7 +42,7 @@ export class PersonaService {
     lastname: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
     telephone: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    keysdoor: new FormControl('', Validators.required)
+    doorkeys: new FormControl([], Validators.required)
   });
 
   initializeFormGroup() {
@@ -52,7 +52,7 @@ export class PersonaService {
     lastname: '',
     email: '',
     telephone: '',
-    keysdoor: '',
+    doorkeys: [],
     });
   }
 }
