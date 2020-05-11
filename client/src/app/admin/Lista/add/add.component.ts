@@ -5,6 +5,7 @@ import { Persona } from 'src/app/Modelo/Persona';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 import { NotificationService } from "../../../Service/notification.service";
+import { Doorkey } from 'src/app/Modelo/Doorkey';
 
 @Component({
   selector: 'app-add',
@@ -14,7 +15,8 @@ import { NotificationService } from "../../../Service/notification.service";
 export class AddComponent implements OnInit {
 
   persona:Persona=new Persona();
-
+  personas: Persona[]; //lista de personas vacía
+  
   constructor(
               private router: Router, 
               public service: PersonaService,
@@ -23,11 +25,14 @@ export class AddComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
+    //acá trabajo el método Listar
+    this.service.getPersonas()
+    .subscribe((data: Persona[])=>{
+      this.personas=data;
+    }) //de esta manera ya estaría mostrando todo en nuestro formulario
   }
 
-  keysdoors = new FormControl();
-
-  keysdoorList: string[] = ['Puerta central', 'Puerta cocina', 'Portón'];
+  doorkeys: Doorkey[] = [];
 
   onClear() {
   this.service.form.reset();

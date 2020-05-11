@@ -5,8 +5,8 @@ import { Persona } from 'src/app/Modelo/Persona';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { VerDialogComponent } from './ver-dialog/ver-dialog.component';
 import { AddComponent } from '../add/add.component';
-import { NotificationService } from "../../../Service/notification.service";
 import { EditComponent } from '../edit/edit.component';
+import { NotificationService } from "../../../Service/notification.service";
 
 @Component({
   selector: 'app-listar',
@@ -15,7 +15,9 @@ import { EditComponent } from '../edit/edit.component';
 })
 
 export class ListarComponent {
+
   personas: Persona[]; //lista de personas vacía
+  
   constructor(
               private service:PersonaService, 
               private router:Router, 

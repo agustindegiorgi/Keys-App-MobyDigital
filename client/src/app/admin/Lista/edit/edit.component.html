@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <span class="fill-remaining-space">Nuevo Moby Digimon!</span>
+  <span class="fill-remaining-space">Editar un Moby Digimon!</span>
   <span class="spacer"></span>
   <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
    <mat-icon>clear</mat-icon> 
@@ -49,14 +49,14 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Llaves</mat-label>
-                <mat-select formControlName="keysdoor" name ="keysdoor" multiple required>
-                <mat-select-trigger>
-                    {{service.form.controls['keysdoor'].value ? service.form.controls['keysdoor'].value[0] : ''}}
-                    <span *ngIf="service.form.controls['keysdoor'].value?.length > 1" class="seleccion-llave">
-                    (+{{service.form.controls['keysdoor'].value.length - 1}} {{service.form.controls['keysdoor'].value?.length === 2 ? 'other' : 'others'}})
-                    </span>
-                </mat-select-trigger>
-                <mat-option *ngFor="let keysdoor of keysdoorList" [value]="keysdoor">{{keysdoor}}</mat-option>
+                <mat-select formControlName="doorkeys" multiple required>
+                  <mat-select-trigger>
+                      {{service.form.controls['doorkeys'].value ? service.form.controls['doorkeys'].value[0] : ''}}
+                      <span *ngIf="service.form.controls['doorkeys'].value?.length > 1" class="seleccion-llave">
+                      (+{{service.form.controls['doorkeys'].value.length - 1}} {{service.form.controls['doorkeys'].value?.length === 2 ? 'other' : 'others'}})
+                      </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let doorkeys of doorkeysList" [value]="doorkeys">{{doorkeys}}</mat-option>
                 </mat-select>
             </mat-form-field>
                 <div class="button-row">
