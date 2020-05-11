@@ -15,9 +15,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let persona of personas" class="text-center"> 
-                        <td>{{persona.doorkeys}}</td>
-                        <td>{{persona.name}}</td>
+                    <tr *ngFor="let doorkey of persona.doorkeys" class="text-center"> 
+                        <td>{{doorkey.id}}</td>
+                        <td>{{doorkey.name}}</td>
+                        
                     </tr>
                 </tbody>
             </table>

@@ -52,7 +52,9 @@ export class ListarComponent {
     })
   }
 
-  openDialog() {
+  openDialog(persona:Persona):void {
+    console.log(persona)
+    localStorage.setItem("dni",persona.dni.toString());
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;

@@ -12,8 +12,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 
 export class VerDialogComponent implements OnInit {
-
-  personas: Persona[]; //lista de personas vacía
+  persona:Persona = new Persona();
+ 
   doorkeys: Doorkey[] = [];
 
   constructor(
@@ -23,11 +23,11 @@ export class VerDialogComponent implements OnInit {
               ) {}
 
   ngOnInit(): void {
-    //acá trabajo el método Listar
-    this.service.getPersonas()
-      .subscribe((data: Persona[])=>{
-        this.personas=data;
-    }) //de esta manera ya estaría mostrando todo en nuestro formulario
+    let dni=localStorage.getItem("dni");
+    this.service.getPersonaDni(+dni)
+    .subscribe(data=>{
+      this.persona=data;
+    })
   }
 
   onClose() {
