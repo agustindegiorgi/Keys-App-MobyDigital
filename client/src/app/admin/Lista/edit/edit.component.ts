@@ -5,6 +5,8 @@ import { Persona } from 'src/app/Modelo/Persona';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MatDialog } from "@angular/material/dialog";
 import { NotificationService } from "../../../Service/notification.service";
+import { DoorkeyService } from 'src/app/Service/doorkey.service';
+import { Doorkey } from 'src/app/Modelo/Doorkey';
 
 @Component({
   selector: 'app-edit',
@@ -15,20 +17,24 @@ import { NotificationService } from "../../../Service/notification.service";
 export class EditComponent implements OnInit {
 
   persona:Persona = new Persona();
+  doorkeysList: Doorkey[];
+  
   constructor(
     private router: Router, 
     public service: PersonaService,
+    public serviceDoorkey: DoorkeyService,
     public dialogRef: MatDialogRef<EditComponent>,
     public notificationService: NotificationService 
     ) { }
 
   ngOnInit() {
+    console.log('ESTAS EN EDITAR')
     this.onEdit();
+    this.serviceDoorkey.getDoorkeys()
+    .subscribe((data: Doorkey[])=>{
+      this.doorkeysList=data;
+    })
   }
-
-  doorkeys = new FormControl();
-
-  doorkeysList: string[] = ['Puerta central', 'Puerta cocina', 'Portón'];
 
   onEdit(){
     let dni=localStorage.getItem("dni");

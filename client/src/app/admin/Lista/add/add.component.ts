@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonaService } from 'src/app/Service/persona.service';
+
 import { Persona } from 'src/app/Modelo/Persona';
-import { FormControl } from '@angular/forms';
-import { MatDialogRef, MatDialog } from "@angular/material/dialog";
-import { NotificationService } from "../../../Service/notification.service";
 import { Doorkey } from 'src/app/Modelo/Doorkey';
+import { PersonaService } from 'src/app/Service/persona.service';
+import { DoorkeyService } from 'src/app/Service/doorkey.service';
+
+import { MatDialogRef } from "@angular/material/dialog";
+import { NotificationService } from "../../../Service/notification.service";
 
 @Component({
   selector: 'app-add',
@@ -16,10 +18,13 @@ export class AddComponent implements OnInit {
 
   persona:Persona=new Persona();
   personas: Persona[]; //lista de personas vacía
+  doorkeys: Doorkey[] = [];
+  doorkeysList: Doorkey[];
   
   constructor(
               private router: Router, 
               public service: PersonaService,
+              public serviceDoorkey: DoorkeyService,
               public dialogRef: MatDialogRef<AddComponent>,
               public notificationService: NotificationService 
               ) { }
@@ -30,9 +35,11 @@ export class AddComponent implements OnInit {
     .subscribe((data: Persona[])=>{
       this.personas=data;
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
+    this.serviceDoorkey.getDoorkeys()
+    .subscribe((data: Doorkey[])=>{
+      this.doorkeysList=data;
+    })
   }
-
-  doorkeys: Doorkey[] = [];
 
   onClear() {
   this.service.form.reset();

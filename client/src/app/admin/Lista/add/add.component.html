@@ -51,7 +51,7 @@
                     (+{{service.form.controls['doorkeys'].value.length - 1}} {{service.form.controls['doorkeys'].value?.length === 2 ? 'other' : 'others'}})
                     </span>
                 </mat-select-trigger>-->
-                <mat-option *ngFor="let doorkey of doorkeys" [value]="null">{{doorkey.name}}</mat-option>
+                <mat-option *ngFor="let doorkeys of doorkeysList" [value]="null">{{doorkeys.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
                 <div class="button-row">
