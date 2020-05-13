@@ -27,16 +27,16 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Doorkey> doorkeys;
 
-	
-
-	
-
 	public List<Doorkey> getDoorkeys() {
 		return doorkeys;
 	}
 
 	public void setDoorkeys(List<Doorkey> doorkeys) {
 		this.doorkeys = doorkeys;
+		for (Doorkey doorkey : doorkeys) {
+			doorkey.setUser(this);
+		}
+
 	}
 
 	public Integer getDni() {
