@@ -21,6 +21,7 @@ export class AddComponent implements OnInit {
   doorkeys: Doorkey[] = [];
   doorkeysList: Doorkey[] = [];
   
+  
   constructor(
               private router: Router, 
               public service: PersonaService,
@@ -39,6 +40,8 @@ export class AddComponent implements OnInit {
     .subscribe((data: Doorkey[])=>{
       this.doorkeysList=data;
     })
+    
+
   }
 
   onClear() {
