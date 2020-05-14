@@ -19,7 +19,7 @@ export class AddComponent implements OnInit {
   persona:Persona=new Persona();
   personas: Persona[]; //lista de personas vacía
   doorkeys: Doorkey[] = [];
-  doorkeysList: Doorkey[];
+  doorkeysList: Doorkey[] = [];
   
   constructor(
               private router: Router, 

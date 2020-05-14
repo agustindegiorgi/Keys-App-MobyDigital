@@ -44,14 +44,14 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Llaves</mat-label>
-                <mat-select formControlName="doorkeys" multiple required>
+                <mat-select formControlName="doorkeys" [(ngModel)]="persona.doorkeys" multiple>
                <!-- <mat-select-trigger>
                     {{service.form.controls['doorkeys'].value ? service.form.controls['doorkeys'].value[0] : ''}}
                     <span *ngIf="service.form.controls['doorkeys'].value?.length > 1" class="seleccion-llave">
                     (+{{service.form.controls['doorkeys'].value.length - 1}} {{service.form.controls['doorkeys'].value?.length === 2 ? 'other' : 'others'}})
                     </span>
                 </mat-select-trigger>-->
-                <mat-option *ngFor="let doorkeys of doorkeysList" [value]="null">{{doorkeys.name}}</mat-option>
+                <mat-option *ngFor="let doorkeys of doorkeysList">{{doorkeys.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
                 <div class="button-row">
