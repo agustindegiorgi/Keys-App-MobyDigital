@@ -18,7 +18,8 @@ export class EditComponent implements OnInit {
 
   persona:Persona = new Persona();
   doorkeysList: Doorkey[];
-  
+  doorkeys: Doorkey[] = [];
+
   constructor(
     private router: Router, 
     public service: PersonaService,
