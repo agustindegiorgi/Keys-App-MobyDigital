@@ -19,6 +19,9 @@ export class DoorkeyService {
   getDoorkeys():Observable<Doorkey[]> {
     return this.http.get<Doorkey[]>(this.Url + "/doorkeys"); //obtengo todos los datos de la URL de arriba, que se refiere al backend
   }
+  getDoorkeysnull():Observable<Doorkey[]> {
+    return this.http.get<Doorkey[]>(this.Url + "/doorkeysnull"); //obtengo todas las llaves sin dueño
+  }
   
   createDoorkey(doorkey:Doorkey) {
     return this.http.post<Doorkey>(this.Url + "/doorkey", doorkey);
