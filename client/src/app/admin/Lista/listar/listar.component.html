@@ -39,7 +39,7 @@
                                 matTooltipPosition="above" color="classic">
                             <mat-icon class="add-icon">add</mat-icon>
                         </button>
-                        <button (click)="Nuevo()" mat-mini-fab matTooltip="Agregá llaves!" 
+                        <button (click)="addDoorkeys()" mat-mini-fab matTooltip="Agregá llaves!" 
                                 matTooltipPosition="above" color="classic" class="key-button">
                             <mat-icon class="key-icon">vpn_key</mat-icon>
                         </button>
@@ -53,11 +53,17 @@
                     <td>{{persona.lastname}}</td>
                     <td>{{persona.email}}</td>
                     <td>{{persona.telephone}}</td>
-                    <td><button mat-raised-button (click)="openDialog(persona)"
-                                matTooltip="Mirá las llaves!"
-                                aria-label="Botón que muestra un texto cuando posicionas el mouse encima">VER</button></td>
                     <td>
-                        <button mat-raised-button color="accent" (click)="Editar(persona)">Editar</button>
+                        <button mat-raised-button (click)="openDialog(persona)"
+                                matTooltip="Mirá las llaves!"
+                                aria-label="Botón que muestra un texto cuando posicionas el mouse encima">
+                            VER
+                        </button>
+                    </td>
+                    <td>
+                        <button mat-raised-button color="accent" (click)="Editar(persona)">
+                            Editar
+                        </button>
                         <button mat-raised-button color="warn" (click)="Delete(persona)" style="margin-left: 10px;">
                             <mat-icon class="delete">delete</mat-icon>
                         </button>

@@ -29,7 +29,6 @@ export class EditComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    console.log('ESTAS EN EDITAR')
     this.onEdit();
     this.serviceDoorkey.getDoorkeys()
     .subscribe((data: Doorkey[])=>{

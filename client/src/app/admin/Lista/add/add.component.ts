@@ -16,7 +16,7 @@ import { NotificationService } from "../../../Service/notification.service";
 })
 export class AddComponent implements OnInit {
 
-  persona:Persona=new Persona();
+  persona: Persona = new Persona();
   personas: Persona[]; //lista de personas vacía
   doorkeys: Doorkey[] = [];
   doorkeysList: Doorkey[];
@@ -30,15 +30,10 @@ export class AddComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    //acá trabajo el método Listar
-    this.service.getPersonas()
-    .subscribe((data: Persona[])=>{
-      this.personas=data;
-    }) //de esta manera ya estaría mostrando todo en nuestro formulario
     this.serviceDoorkey.getDoorkeys()
     .subscribe((data: Doorkey[])=>{
       this.doorkeysList=data;
-    })
+    }) //acá traigo la lista de llaves al selector
   }
 
   onClear() {

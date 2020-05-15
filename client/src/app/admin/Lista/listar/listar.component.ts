@@ -7,6 +7,8 @@ import { VerDialogComponent } from './ver-dialog/ver-dialog.component';
 import { AddComponent } from '../add/add.component';
 import { EditComponent } from '../edit/edit.component';
 import { NotificationService } from "../../../Service/notification.service";
+import { AddDoorkeysComponent } from '../add-doorkeys/add-doorkeys.component';
+import { DoorkeyService } from 'src/app/Service/doorkey.service';
 
 @Component({
   selector: 'app-listar',
@@ -19,7 +21,8 @@ export class ListarComponent {
   personas: Persona[]; //lista de personas vacía
   
   constructor(
-              private service:PersonaService, 
+              private service:PersonaService,
+              private serviceDoorkey: DoorkeyService,
               private router:Router, 
               public dialog: MatDialog,
               public notificationService: NotificationService
@@ -71,4 +74,12 @@ export class ListarComponent {
     this.dialog.open(AddComponent, dialogConfig);
    }
    
+   addDoorkeys() {
+    this.serviceDoorkey.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.dialog.open(AddDoorkeysComponent, dialogConfig);
+   }
 } //end class

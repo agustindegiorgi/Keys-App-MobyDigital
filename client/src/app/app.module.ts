@@ -22,6 +22,7 @@ import { EditComponent } from './admin/Lista/edit/edit.component';
 import { PersonaService } from "./Service/persona.service";
 import { VerDialogComponent } from "./admin/Lista/listar/ver-dialog/ver-dialog.component";
 import { VerDialogUserComponent } from "./user/Lista/listar/ver-dialog-user/ver-dialog-user.component";
+import { AddDoorkeysComponent } from './admin/Lista/add-doorkeys/add-doorkeys.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { VerDialogUserComponent } from "./user/Lista/listar/ver-dialog-user/ver-
     HomeComponent,
     RootComponent,
     VerDialogComponent,
-    VerDialogUserComponent
+    VerDialogUserComponent,
+    AddDoorkeysComponent
   ],
   entryComponents: [
     VerDialogComponent, 

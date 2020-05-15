@@ -1,0 +1,26 @@
+form.normal-form {
+    margin: 15px;
+    margin-left: 10px;
+}
+
+.button-row button{
+  margin: 5px;
+}
+
+.container {
+    width: 250px;
+    height: 100%;
+}
+
+/* ESPACIADO EN TOOLBAR */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* BOTÓN DE CIERRE */
+.btn-dialog-close {
+  width: 45px;
+  min-width: 0px !important;
+  height: 40px;
+  padding: 0px !important;
+}

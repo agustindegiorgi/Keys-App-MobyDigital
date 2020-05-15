@@ -1,0 +1,35 @@
+<mat-toolbar>
+    <span class="fill-remaining-space">Nuevas llaves</span>
+    <span class="spacer"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+      <mat-icon>clear</mat-icon> 
+    </button>
+</mat-toolbar>
+<div class="container">
+    <form [formGroup]="serviceDoorkey.form" npm class="normal-form">
+        <mat-grid-list cols="1" rowHeight="200px">
+            <mat-grid-tile> <!-- PRIMER FILA -->
+            <div class="controler-container">
+                <input type="hidden" formControlName="id">
+                <mat-form-field>
+                    <mat-label>Añadí su ID</mat-label>
+                    <input formControlName="id" [(ngModel)]="doorkey.id" matInput type="number" placeholder="Agregá el ID" maxlength="3" required> <!--SIEMPRE se le agrega matInput-->
+                    <mat-error *ngIf="serviceDoorkey.form.controls['id'].errors?.required">Faltó rellenar el campo.</mat-error>
+                    <mat-error *ngIf="serviceDoorkey.form.controls['id'].errors?.minlength">3 caracteres.</mat-error>
+                </mat-form-field>                
+                <mat-form-field>
+                    <mat-label>Ingresá el nombre</mat-label>
+                    <input formControlName="name" [(ngModel)]="doorkey.name" matInput placeholder="Ingresá el nombre" required> <!--SIEMPRE se le agrega matInput-->
+                    <mat-error>Faltó rellenar el campo.</mat-error>
+                </mat-form-field>
+
+                    <div class="button-row">
+                        <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="serviceDoorkey.form.invalid">Enviar</button>
+                        <button mat-raised-button color="warn" (click)="onClear()">Borrar</button>
+                    </div>
+
+            </div>
+            </mat-grid-tile> <!--FIN SEGUNDA FILA-->
+        </mat-grid-list> <!--FIN LISTADO DE FORMULARIO-->
+    </form>
+</div>
