@@ -38,7 +38,6 @@ export class VerDialogComponent implements OnInit {
  async onDelete(doorkey: Doorkey){
   await  this.serviceDoorkey.deleteDoorkey(doorkey)
     .subscribe(() => {
-      console.log("aca esta en el subscribe")
       this.persona.doorkeys = this.persona.doorkeys.filter(p=>p!==doorkey);
       this.notificationService.successDelete(':: Se eliminó correctamente')
      
