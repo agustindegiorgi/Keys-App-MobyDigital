@@ -19,11 +19,12 @@ import { DoorkeyService } from 'src/app/Service/doorkey.service';
 export class ListarComponent {
 
   personas: Persona[]; //lista de personas vacía
+  persona: Persona = new Persona();
   
   constructor(
-              private service:PersonaService,
+              private service: PersonaService,
               private serviceDoorkey: DoorkeyService,
-              private router:Router, 
+              private router: Router, 
               public dialog: MatDialog,
               public notificationService: NotificationService
               ) {}
@@ -36,7 +37,7 @@ export class ListarComponent {
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
   }
 
-  Editar(persona:Persona):void
+  onEdit(persona: Persona): void
   {
     console.log(persona)
     localStorage.setItem("dni",persona.dni.toString());
@@ -47,25 +48,25 @@ export class ListarComponent {
     this.dialog.open(EditComponent, dialogConfig);
   }
 
-  Delete(persona:Persona){
+  onDelete(persona: Persona) {
     this.service.deletePersona(persona)
-    .subscribe(()=>{
+    .subscribe(() => {
       this.personas=this.personas.filter(p=>p!==persona);
       this.notificationService.successDelete(':: Se eliminó correctamente');
     })
   }
 
-  openDialog(persona:Persona):void {
+  openDialog(persona: Persona): void {
     console.log(persona)
     localStorage.setItem("dni",persona.dni.toString());
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "40%";
     this.dialog.open(VerDialogComponent, dialogConfig); 
   }
 
-  Nuevo() {
+  onNew() {
     this.service.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

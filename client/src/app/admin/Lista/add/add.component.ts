@@ -30,7 +30,7 @@ export class AddComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.serviceDoorkey.getDoorkeysnull()
+    this.serviceDoorkey.getDoorkeysNull()
     .subscribe((data: Doorkey[])=>{
       this.doorkeysList=data;
     }) //acá traigo la lista de llaves al selector

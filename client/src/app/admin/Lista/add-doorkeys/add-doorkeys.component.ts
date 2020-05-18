@@ -26,8 +26,8 @@ export class AddDoorkeysComponent implements OnInit {
   ngOnInit(): void {}
 
   onClear() {
-  this.serviceDoorkey.form.reset();
-  this.serviceDoorkey.initializeFormGroup();
+    this.serviceDoorkey.form.reset();
+    this.serviceDoorkey.initializeFormGroup();
   }
 
     redirectTo(uri:string){

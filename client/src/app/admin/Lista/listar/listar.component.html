@@ -35,7 +35,7 @@
                     <th>TELEFONO</th>
                     <th>LLAVES</th>
                     <th>
-                        <button (click)="Nuevo()" mat-mini-fab matTooltip="Agregá un Moby Digimon!" 
+                        <button (click)="onNew()" mat-mini-fab matTooltip="Agregá un Moby Digimon!" 
                                 matTooltipPosition="above" color="classic">
                             <mat-icon class="add-icon">add</mat-icon>
                         </button>
@@ -61,10 +61,10 @@
                         </button>
                     </td>
                     <td>
-                        <button mat-raised-button color="accent" (click)="Editar(persona)">
+                        <button mat-raised-button color="accent" (click)="onEdit(persona)">
                             Editar
                         </button>
-                        <button mat-raised-button color="warn" (click)="Delete(persona)" style="margin-left: 10px;">
+                        <button mat-raised-button color="warn" (click)="onDelete(persona)" style="margin-left: 10px;">
                             <mat-icon class="delete">delete</mat-icon>
                         </button>
                     </td>

@@ -16,8 +16,8 @@ import { Doorkey } from 'src/app/Modelo/Doorkey';
 
 export class EditComponent implements OnInit {
 
-  persona:Persona = new Persona();
-  doorkeysList: Doorkey[];//lista de llaves sin dueño
+  persona: Persona = new Persona();
+  doorkeysList: Doorkey[]; //lista de llaves sin dueño
   doorkeys: Doorkey[] = [];
 
   constructor(
@@ -30,9 +30,9 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.onEdit();
-    this.serviceDoorkey.getDoorkeysnull()
+    this.serviceDoorkey.getDoorkeysNull()
     .subscribe((data: Doorkey[])=>{
-      this.doorkeysList=data;
+      this.doorkeysList = data;
     })
   }
 
@@ -44,7 +44,7 @@ export class EditComponent implements OnInit {
     })
   }
   
-  onUpdate(persona:Persona){
+  onUpdate(persona: Persona){
     this.service.updatePersona(persona)
     .subscribe(data => {
       this.persona=data as any;
