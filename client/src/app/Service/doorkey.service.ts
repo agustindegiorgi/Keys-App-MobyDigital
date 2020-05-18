@@ -31,7 +31,8 @@ export class DoorkeyService {
   }
 
   deleteDoorkey(doorkey: Doorkey) {
-    return this.http.delete(this.Url+"/doorkey/"+doorkey.id);
+    console.log(doorkey)
+   return  this.http.delete(this.Url+"/doorkey/"+doorkey.id);
   }
 
   form: FormGroup = new FormGroup({

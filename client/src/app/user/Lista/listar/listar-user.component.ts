@@ -21,6 +21,10 @@ export class ListarUserComponent {
 
   personas: Persona[]; //lista de personas vacía
   ngOnInit(): void {
+
+    if(window.localStorage.getItem("apiMessage")!=="OK USER"){
+      this.router.navigate(["login"]);
+    }
     //acá trabajo el método Listar
     this.service.getPersonas()
     .subscribe((data: Persona[])=>{
@@ -28,12 +32,18 @@ export class ListarUserComponent {
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
   }
 
+
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(VerDialogUserComponent, dialogConfig); 
+  }
+
+  logout(){
+    window.localStorage.removeItem("apiMessage");
+    this.router.navigate(["login"]);
   }
 
 } //end class
