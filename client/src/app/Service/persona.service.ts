@@ -12,27 +12,27 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class PersonaService {
 
   constructor(private http:HttpClient) { }
-  //host de backend, la barra '/' sola es el home//host de backend, la barra '/' sola es el home
+    //host de backend, la barra '/' sola es el home//host de backend, la barra '/' sola es el home
   private Url:string="https://keys-app-mobydigital.herokuapp.com/api";
-  //private Url:string="http://localhost:8081/api";
+    //private Url:string="http://localhost:8081/api";
 
-  getPersonas():Observable<Persona[]> {
+  getPersonas(): Observable<Persona[]> {
     return this.http.get<Persona[]>(this.Url+"/users"); //obtengo todos los datos de la URL de arriba, que se refiere al backend
   }
 
-  createPersona(persona:Persona) {
+  createPersona(persona: Persona) {
     return this.http.post<Persona>(this.Url+"/user",persona);
   }
 
-  getPersonaDni(dni:number) {
+  getPersonaDni(dni: number) {
     return this.http.get<Persona>(this.Url+"/user/"+dni);
   }
 
-  updatePersona(persona:Persona) {
+  updatePersona(persona: Persona) {
     return this.http.put(this.Url+"/user/"+persona.dni,persona);
   } //borré el <Persona>, es decir el template, porque eso es "a este objeto lo casteo"
 
-  deletePersona(persona:Persona) {
+  deletePersona(persona: Persona) {
     return this.http.delete(this.Url+"/user/"+persona.dni);
   }
 
@@ -47,12 +47,12 @@ export class PersonaService {
 
   initializeFormGroup() {
     this.form.setValue({
-    dni: null,
-    name: '',
-    lastname: '',
-    email: '',
-    telephone: '',
-    doorkeys: [],
+      dni: null,
+      name: '',
+      lastname: '',
+      email: '',
+      telephone: '',
+      doorkeys: [],
     });
   }
 }

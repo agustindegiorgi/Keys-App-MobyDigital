@@ -32,14 +32,14 @@ public class UserServiceApplication {
 	@GetMapping("/")
 	public String login(String username, Integer password) {
      
-		System.out.println(username +" "+password );
+	System.out.println(username +" "+password );
 	 Login logged= loginService.findByUserName(username);
 	 String userNameDB  = logged.getUserName();
 	 Integer passwordDB = logged.getPassword();
 	 String rolDB       = logged.getRol();
 	  
 	 
-	 System.out.println("el nombre encontrado en la db  "+logged.getUserName());
+	 System.out.println("El nombre encontrado en la DB "+logged.getUserName());
 	 
 	 if ( passwordDB.equals(password)&& rolDB.equals("ADMIN")) {
 		return  "OK ADMIN";
@@ -61,7 +61,7 @@ public class UserServiceApplication {
 			loginNew = loginService.save(login);
 			
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al querer guardar ");
+			response.put("mensaje", "Error al querer guardar");
 			response.put("error", e.getMessage());
 			return  new ResponseEntity<Map<String, Object>>(response ,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -77,12 +77,12 @@ public class UserServiceApplication {
 		    	loginService.delete(username);
 		} catch (DataAccessException e) {
 			
-			response.put("mensaje","Error al intentar eliminar " );
+			response.put("mensaje","Error al intentar eliminar!" );
 			response.put("error", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		}
-		response.put("mensaje", "Eliminado con Exito!!");
+		response.put("mensaje", "Eliminado con Éxito!!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 	
@@ -93,19 +93,19 @@ public class UserServiceApplication {
 		Map<String, Object> response = new HashMap<>();
 		
 		if (currentLogin ==null) {
-			response.put("menaje", "No existe en la DB");
+			response.put("mensaje", "No existe en la DB");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		try {
 		     currentLogin.setPassword(login.getPassword());
 		     loginUpdate =  loginService.save(currentLogin);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "error querer actualizar");
+			response.put("mensaje", "Error al querer actualizar");
 			response.put("Error", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje","Acutulizado con Exito!");
+		response.put("mensaje","Actualizado con Éxito!");
 		response.put("login", loginUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}

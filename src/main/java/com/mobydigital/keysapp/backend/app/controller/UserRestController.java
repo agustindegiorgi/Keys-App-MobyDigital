@@ -105,6 +105,9 @@ public class UserRestController {
 		try {
 			currentUser.setEmail(user.getEmail());
 			currentUser.setTelephone(user.getTelephone());
+			currentUser.setName(user.getName());
+			currentUser.setLastname(user.getLastname());
+			currentUser.setDoorkeys(user.getDoorkeys());
 			userUpdated= userService.save(currentUser);
 
 		} catch (DataAccessException e) {

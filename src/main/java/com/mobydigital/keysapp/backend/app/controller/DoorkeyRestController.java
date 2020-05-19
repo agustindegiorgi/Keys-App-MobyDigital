@@ -43,6 +43,20 @@ public class DoorkeyRestController {
 		}
 
 	}
+	@GetMapping("/doorkeysnull")
+    public ResponseEntity<?> listNull() {
+        
+		try {
+			return new ResponseEntity<Object>(doorkeyService.findKeyDninull(), HttpStatus.OK);
+
+		} catch (DataAccessException e) {
+			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+        
+	}
+	
+	
 
 	@GetMapping("/doorkey/{id}")
 	public ResponseEntity<?> findKeyByID(@PathVariable Integer id) {

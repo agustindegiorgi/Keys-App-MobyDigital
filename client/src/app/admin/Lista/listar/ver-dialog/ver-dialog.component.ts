@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Persona } from 'src/app/Modelo/Persona';
 import { Doorkey } from "src/app/Modelo/Doorkey";
 import { MatDialogRef } from '@angular/material/dialog';
+import { DoorkeyService } from 'src/app/Service/doorkey.service';
+import { NotificationService } from "../../../../Service/notification.service";
 
 @Component({
   selector: 'app-ver-dialog',
@@ -12,22 +14,34 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 
 export class VerDialogComponent implements OnInit {
-  persona:Persona = new Persona();
- 
+  
+  persona: Persona = new Persona();
+  doorkey: Doorkey = new Doorkey();
   doorkeys: Doorkey[] = [];
 
   constructor(
               private service: PersonaService,
               private router: Router,
-              public dialogRef: MatDialogRef<VerDialogComponent>
+              public dialogRef: MatDialogRef<VerDialogComponent>,
+              public serviceDoorkey: DoorkeyService,
+              public notificationService: NotificationService
               ) {}
 
   ngOnInit(): void {
-    let dni=localStorage.getItem("dni");
+    let dni = localStorage.getItem("dni");
     this.service.getPersonaDni(+dni)
-    .subscribe(data=>{
-      this.persona=data;
+    .subscribe(data => {
+      this.persona = data;
     })
+  }
+
+ async onDelete(doorkey: Doorkey){
+  await  this.serviceDoorkey.deleteDoorkey(doorkey)
+    .subscribe(() => {
+      this.persona.doorkeys = this.persona.doorkeys.filter(p=>p!==doorkey);
+      this.notificationService.successDelete(':: Se eliminó correctamente')
+     
+    });
   }
 
   onClose() {

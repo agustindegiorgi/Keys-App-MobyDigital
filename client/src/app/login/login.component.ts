@@ -30,11 +30,13 @@ export class LoginComponent {
     resp.subscribe(data => {
       console.log(data)
       this.message = data;
-      if (data == 'OK ADMIN' ) { 
+      if (data == 'OK ADMIN' ) {
+        window.localStorage.setItem("apiMessage",data.toString()) 
        this.router.navigate(["admin"])
       }
       else {
         if (data == 'OK USER') {
+          window.localStorage.setItem("apiMessage",data.toString())
           this.router.navigate(["user"])
         }
         else {

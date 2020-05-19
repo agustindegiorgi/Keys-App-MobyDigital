@@ -10,10 +10,19 @@ import { Router } from "@angular/router";
 export class AdminComponent {
 
   constructor(private router:Router) {}
+   
+  ngOnInit(){
+    if(window.localStorage.getItem("apiMessage")!=="OK ADMIN"){
+      this.router.navigate(["login"]);
+    }
+  }
 
   Listar() {
    this.router.navigate(["listar"]);
   }
-   
+   logout(){
+     window.localStorage.removeItem("apiMessage");
+     this.router.navigate(["login"]);
+   }
 }
 

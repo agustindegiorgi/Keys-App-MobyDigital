@@ -31,3 +31,4 @@ build/
 .vscode/
 /bin/
 node_modules/
+/.apt_generated_tests/

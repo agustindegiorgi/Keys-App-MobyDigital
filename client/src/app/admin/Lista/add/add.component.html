@@ -37,8 +37,8 @@
         <mat-grid-tile> <!-- SEGUNDA FILA -->
         <div class="controler-container">
             <mat-form-field>
-              <mat-label>Añadí su dni</mat-label>
-                <input formControlName="dni" [(ngModel)]="persona.dni" matInput placeholder="Agregá su DNI" maxlength="8" required> <!--SIEMPRE se le agrega matInput-->
+              <mat-label>Añadí su DNI</mat-label>
+                <input formControlName="dni" [(ngModel)]="persona.dni" matInput placeholder="DNI" maxlength="8" required> <!--SIEMPRE se le agrega matInput-->
                 <mat-error *ngIf="service.form.controls['dni'].errors?.required">Faltó rellenar el campo.</mat-error>
                 <mat-error *ngIf="service.form.controls['dni'].errors?.minlength">8 caracteres.</mat-error>
             </mat-form-field>

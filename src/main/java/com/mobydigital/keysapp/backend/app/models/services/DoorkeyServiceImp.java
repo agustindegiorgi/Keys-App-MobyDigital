@@ -12,6 +12,7 @@ import com.mobydigital.keysapp.backend.app.models.entity.Doorkey;
 
 
 
+
 @Service
 public class DoorkeyServiceImp implements IDoorkeyService {
 
@@ -23,6 +24,11 @@ public class DoorkeyServiceImp implements IDoorkeyService {
 	public List<Doorkey> findAll() {
 
 		return (List<Doorkey>) doorkeyDao.findAll();
+	}
+	@Override
+	public List<Doorkey> findKeyDninull() {
+		
+		return doorkeyDao.findKeyDninull();
 	}
 
 	@Override
