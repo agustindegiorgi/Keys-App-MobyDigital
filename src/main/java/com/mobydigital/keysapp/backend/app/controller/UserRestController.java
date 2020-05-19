@@ -130,12 +130,12 @@ public class UserRestController {
 			
 
 		} catch (DataAccessException e) {
-			response.put("mensaje", "eror al querer eliminar el usuario");
-			response.put("erro", e.getMessage());
+			response.put("mensaje", "Error al querer eliminar el usuario");
+			response.put("error", e.getMessage());
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje", "El usuario fue borrado con exito!");
+		response.put("mensaje", "El usuario fue eliminado con exito!");
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
 	}
 
