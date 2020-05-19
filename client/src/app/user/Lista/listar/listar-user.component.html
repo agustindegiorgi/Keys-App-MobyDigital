@@ -1,11 +1,11 @@
 <nav class="navbar navbar-dark sticky-top" style="background-color: #f7444e;"> <!-- BARRA DE NAVEGACIÓN -->   
-    <a class="navbar-brand" (click)="logout()">  
+    <a class="navbar-brand"  (click)="logout()">  
         Cerrar sesión
     </a>
     <!-- <a class="navbar-brand" href="/home">
         <img src="../../assets/images/logomobygrande.png" style="max-height: 30px;" alt="MOBYDIGITAL"/>
     </a> -->
-    <a href="/user">
+    <a href="/admin">
         <div class="home-button">
             <button mat-icon-button>
             <mat-icon>home</mat-icon>
@@ -17,13 +17,13 @@
 <br><br>
 
 <div class="container container-light">
-
+    
     <mat-toolbar>
         <span class="fill-remaining-space">
-            Nuevo Moby Digimon!
+            Listado de Moby
         </span>
     </mat-toolbar>
-    
+
     <div class="body">
         <table class="table table-hover table-light">
             <thead>
@@ -34,6 +34,9 @@
                     <th>EMAIL</th>
                     <th>TELEFONO</th>
                     <th>LLAVES</th>
+                    <th>
+                     
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -43,11 +46,16 @@
                     <td>{{persona.lastname}}</td>
                     <td>{{persona.email}}</td>
                     <td>{{persona.telephone}}</td>
-                    <td><button mat-raised-button (click)="openDialog()"
+                    <td>
+                        <button mat-raised-button (click)="openDialog(persona)"
                                 matTooltip="Mirá las llaves!"
-                                aria-label="Button that displays a tooltip when focused or hovered over">VER</button></td>
+                                aria-label="Botón que muestra un texto cuando posicionas el mouse encima">
+                            VER
+                        </button>
+                    </td>
+                    
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> <!-- FIN DIV LISTA -->
 </div>

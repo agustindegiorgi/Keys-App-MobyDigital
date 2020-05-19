@@ -31,10 +31,12 @@ export class ListarUserComponent {
       this.personas=data;
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
   }
+ 
 
-
-  openDialog() {
+  openDialog(persona: Persona): void{
+    console.log(persona)
     const dialogConfig = new MatDialogConfig();
+    localStorage.setItem("dni",persona.dni.toString());
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";

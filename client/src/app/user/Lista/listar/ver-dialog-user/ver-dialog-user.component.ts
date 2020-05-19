@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Persona } from 'src/app/Modelo/Persona';
 import { Doorkey } from "src/app/Modelo/Doorkey";
 import { MatDialogRef } from '@angular/material/dialog';
+import { DoorkeyService } from 'src/app/Service/doorkey.service';
+import { NotificationService } from "../../../../Service/notification.service";
+
 
 @Component({
   selector: 'app-ver-dialog-user',
@@ -12,28 +15,39 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class VerDialogUserComponent implements OnInit {
 
-  personas: Persona[]; //lista de personas vacía+
+  persona: Persona = new Persona();
+  doorkey: Doorkey = new Doorkey();
   doorkeys: Doorkey[] = [];
-  
   constructor(
     private service:PersonaService, 
     private router:Router,
-    public dialogRef: MatDialogRef<VerDialogUserComponent>
+    public serviceDoorkey: DoorkeyService,
+    public dialogRef: MatDialogRef<VerDialogUserComponent>,
+    public notificationService: NotificationService
     ) {}
 
-    ngOnInit(): void {
-      //acá trabajo el método Listar
-      this.service.getPersonas()
-      .subscribe((data: Persona[])=>{
-        this.personas=data;
-      }) //de esta manera ya estaría mostrando todo en nuestro formulario
-    }
+  ngOnInit(): void {
+    let dni = localStorage.getItem("dni");
+    this.service.getPersonaDni(+dni)
+    .subscribe(data => {
+      this.persona = data;
+    })
+  }
   
     onClose() {
       this.service.form.reset();
       this.service.initializeFormGroup();
+      localStorage.dni.removeItem
       this.dialogRef.close();
     }
   
+    async onDelete(doorkey: Doorkey){
+      await  this.serviceDoorkey.deleteDoorkey(doorkey)
+        .subscribe(() => {
+          this.persona.doorkeys = this.persona.doorkeys.filter(p=>p!==doorkey);
+          this.notificationService.successDelete(':: Se eliminó correctamente')
+         
+        });
+      }
+  
 }
-
