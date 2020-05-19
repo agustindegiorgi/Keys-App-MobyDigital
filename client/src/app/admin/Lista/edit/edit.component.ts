@@ -43,7 +43,7 @@ export class EditComponent implements OnInit {
       this.persona=data;
     })
   }
-  
+  //actuliza los datos 
   onUpdate(persona: Persona){
     this.service.updatePersona(persona)
     .subscribe(data => {
