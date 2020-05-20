@@ -19,9 +19,82 @@
     </a>
   </nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
 
-<br><br>
+<br>
 
-<div class="container container-light">
+<div class="search-div">
+<mat-form-field class="search-form-field" floatLabel="never">
+    <input matInput [(ngModel)]="searchKey" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter()">
+    <button mat-button matSuffix mat-icon-button aria-label="Borrar" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+<button (click)="onNew()" mat-mini-fab matTooltip="Agregá un Moby Digimon!" matTooltipPosition="above" color="classic" class="add-button">
+    <mat-icon class="add-icon">add</mat-icon>
+</button>
+<button (click)="addDoorkeys()" mat-mini-fab matTooltip="Agregá llaves!" matTooltipPosition="above" color="classic" class="key-button">
+    <mat-icon class="key-icon">vpn_key</mat-icon>
+</button>
+</div>
+<div class="mat-elevation-z8 justify-text-center">
+    <mat-table [dataSource]="listData" matSort>
+        <ng-container matColumnDef="dni">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>DNI</mat-header-cell>
+            <mat-cell *matCellDef="let persona">{{persona.dni}}</mat-cell> <!--el ELEMENT trae un objeto a la columna-->
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre/s</mat-header-cell>
+            <mat-cell *matCellDef="let persona">{{persona.name}}</mat-cell> <!--el ELEMENT trae un objeto a la columna-->
+        </ng-container>
+        <ng-container matColumnDef="lastname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido/s</mat-header-cell>
+            <mat-cell *matCellDef="let persona">{{persona.lastname}}</mat-cell> <!--el ELEMENT trae un objeto a la columna-->
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>E-Mail</mat-header-cell>
+            <mat-cell *matCellDef="let persona">{{persona.email}}</mat-cell> <!--el ELEMENT trae un objeto a la columna-->
+        </ng-container>
+        <ng-container matColumnDef="telephone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</mat-header-cell>
+            <mat-cell *matCellDef="let persona">{{persona.telephone}}</mat-cell> <!--el ELEMENT trae un objeto a la columna-->
+        </ng-container>
+        <ng-container matColumnDef="action-doorkeys">
+            <mat-header-cell *matHeaderCellDef>Llaves</mat-header-cell>
+            <mat-cell *matCellDef="let persona">
+                <button mat-raised-button (click)="openDialog(persona)" matTooltip="Mirá las llaves!"
+                aria-label="Botón que muestra un texto cuando posicionas el mouse encima">
+                    VER
+                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let persona">
+                <button mat-raised-button color="accent" (click)="onEdit(persona)">
+                    Editar
+                </button>
+                <button mat-raised-button color="warn" (click)="onDelete(persona)" style="margin-left: 10px;">
+                    <mat-icon class="delete">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                Cargando...
+            </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                No hay información disponible
+            </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row><!--DEFINE EL TEMPLATE de ROW y HEADER-->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row><!--DEFINE EL TEMPLATE de ROW y HEADER-->
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions] = "[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>
+<!--<div class="container container-light">
     
     <mat-toolbar>
         <span class="fill-remaining-space">
@@ -53,8 +126,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let persona of personas" class="text-center"> 
-                    <td>{{persona.dni}}</td> <!--Índice persona va a iterar en cada uno de los elementos-->
-                    <td>{{persona.name}}</td>
+                    <td>{{persona.dni}}</td> Índice persona va a iterar en cada uno de los elementos-->
+<!--                    <td>{{persona.name}}</td>
                     <td>{{persona.lastname}}</td>
                     <td>{{persona.email}}</td>
                     <td>{{persona.telephone}}</td>
@@ -76,5 +149,5 @@
                 </tr>
             </tbody>
         </table>
-    </div> <!-- FIN DIV LISTA -->
-</div>
+    </div> FIN DIV LISTA
+</div> -->

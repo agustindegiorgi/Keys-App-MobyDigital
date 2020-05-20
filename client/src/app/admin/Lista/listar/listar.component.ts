@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PersonaService } from "../../../Service/persona.service";
 import { Persona } from 'src/app/Modelo/Persona';
@@ -9,6 +9,9 @@ import { EditComponent } from '../edit/edit.component';
 import { NotificationService } from "../../../Service/notification.service";
 import { AddDoorkeysComponent } from '../add-doorkeys/add-doorkeys.component';
 import { DoorkeyService } from 'src/app/Service/doorkey.service';
+import { MatTableDataSource } from '@angular/material/table'
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listar',
@@ -26,8 +29,14 @@ export class ListarComponent {
               private serviceDoorkey: DoorkeyService,
               private router: Router, 
               public dialog: MatDialog,
-              public notificationService: NotificationService
+              public notificationService: NotificationService,
               ) {}
+
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[] = ['dni', 'name', 'lastname', 'email', 'telephone', 'action-doorkeys', 'actions'];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  searchKey: string;
 
   ngOnInit(): void {
     if (window.localStorage.getItem("apiMessage")!=="OK ADMIN") {
@@ -36,8 +45,12 @@ export class ListarComponent {
     //acá trabajo el método Listar
     this.service.getPersonas()
     .subscribe((data: Persona[])=>{
-      this.personas=data;
+      this.personas = data;
+      this.listData = new MatTableDataSource(this.personas);
+      this.listData.sort = this.sort;
+      this.listData.paginator = this.paginator;
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
+    
   }
 
   onEdit(persona: Persona): void
@@ -55,6 +68,7 @@ export class ListarComponent {
     this.service.deletePersona(persona)
     .subscribe(() => {
       this.personas=this.personas.filter(p=>p!==persona);
+      this.redirectTo('listar');
       this.notificationService.success(':: Se eliminó correctamente');
     })
   }
@@ -86,12 +100,25 @@ export class ListarComponent {
     dialogConfig.width = "30%";
     this.dialog.open(AddDoorkeysComponent, dialogConfig);
     console.log(window.localStorage)
-    
+   }
+
+   onSearchClear() {
+     this.searchKey = "";
+     this.applyFilter();
+   }
+
+   applyFilter() {
+     this.listData.filter = this.searchKey.trim().toLowerCase();
    }
 
    logout(){
     window.localStorage.removeItem("apiMessage");
     this.router.navigate(["login"]);
+  }
+
+  redirectTo(uri:string) {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
   }
 } //end class
 
