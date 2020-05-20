@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PersonaService } from 'src/app/Service/persona.service';
 import { Persona } from 'src/app/Modelo/Persona';
-import { FormControl } from '@angular/forms';
-import { MatDialogRef, MatDialog } from "@angular/material/dialog";
+import { MatDialogRef } from "@angular/material/dialog";
 import { NotificationService } from "../../../Service/notification.service";
 import { DoorkeyService } from 'src/app/Service/doorkey.service';
 import { Doorkey } from 'src/app/Modelo/Doorkey';
@@ -17,6 +16,7 @@ import { Doorkey } from 'src/app/Modelo/Doorkey';
 export class EditComponent implements OnInit {
 
   persona: Persona = new Persona();
+
   doorkeysList: Doorkey[]; //lista de llaves sin dueño
   doorkeys: Doorkey[] = [];
 
@@ -36,15 +36,15 @@ export class EditComponent implements OnInit {
     })
   }
 
-  onEdit(){
+  onEdit() {
     let dni=localStorage.getItem("dni");
     this.service.getPersonaDni(+dni)
     .subscribe(data=>{
       this.persona=data;
     })
   }
-  //actuliza los datos 
-  onUpdate(persona: Persona){
+  
+  onUpdate(persona: Persona) {
     this.service.updatePersona(persona)
     .subscribe(data => {
       this.persona=data as any;
@@ -65,7 +65,7 @@ export class EditComponent implements OnInit {
     this.service.initializeFormGroup();
     }
 
-  redirectTo(uri:string){
+  redirectTo(uri:string) {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));
   }

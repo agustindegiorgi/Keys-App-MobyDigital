@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DoorkeyService } from 'src/app/Service/doorkey.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AddComponent } from '../add/add.component';
 import { NotificationService } from 'src/app/Service/notification.service';
 import { Doorkey } from 'src/app/Modelo/Doorkey';
 

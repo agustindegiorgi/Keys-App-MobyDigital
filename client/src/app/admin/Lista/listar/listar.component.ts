@@ -30,7 +30,7 @@ export class ListarComponent {
               ) {}
 
   ngOnInit(): void {
-    if(window.localStorage.getItem("apiMessage")!=="OK ADMIN"){
+    if (window.localStorage.getItem("apiMessage")!=="OK ADMIN") {
       this.router.navigate(["login"]);
     }
     //acá trabajo el método Listar
@@ -39,8 +39,6 @@ export class ListarComponent {
       this.personas=data;
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
   }
- 
-
 
   onEdit(persona: Persona): void
   {
@@ -81,7 +79,6 @@ export class ListarComponent {
    }
    
    addDoorkeys() {
-     console.log("aca estoy en aderir llaves")
     this.serviceDoorkey.initializeFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -91,6 +88,7 @@ export class ListarComponent {
     console.log(window.localStorage)
     
    }
+
    logout(){
     window.localStorage.removeItem("apiMessage");
     this.router.navigate(["login"]);

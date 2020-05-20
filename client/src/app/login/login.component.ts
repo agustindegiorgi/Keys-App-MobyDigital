@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { LoginService } from '../Service/login.service';
 import { Router } from '@angular/router';
+import { NotificationService } from "../Service/notification.service";
 
 @Component({
   selector: 'login',
@@ -15,9 +16,11 @@ export class LoginComponent {
   password: number;
   message: any;
 
-  constructor(private loginService: LoginService, private router: Router) {
-
-  }
+  constructor(
+              private loginService: LoginService,
+              private router: Router,
+              public notificationService: NotificationService
+              ) {}
 
   profileForm = new FormGroup({
     username: new FormControl(''),
@@ -32,7 +35,8 @@ export class LoginComponent {
       this.message = data;
       if (data == 'OK ADMIN' ) {
         window.localStorage.setItem("apiMessage",data.toString()) 
-       this.router.navigate(["admin"])
+        this.router.navigate(["admin"])
+        this.notificationService.successLogin(':: Sesión iniciada correctamente');
       }
       else {
         if (data == 'OK USER') {

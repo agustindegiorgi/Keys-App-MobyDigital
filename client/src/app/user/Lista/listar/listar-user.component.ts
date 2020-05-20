@@ -13,16 +13,16 @@ import { VerDialogUserComponent } from './ver-dialog-user/ver-dialog-user.compon
 
 export class ListarUserComponent {
   
+  personas: Persona[]; //lista de personas vacía
+
   constructor(
               private service:PersonaService,
               private router:Router,
               public dialog: MatDialog
               ) {}
 
-  personas: Persona[]; //lista de personas vacía
   ngOnInit(): void {
-
-    if(window.localStorage.getItem("apiMessage")!=="OK USER"){
+    if(window.localStorage.getItem("apiMessage")!=="OK USER") {
       this.router.navigate(["login"]);
     }
     //acá trabajo el método Listar
@@ -32,12 +32,11 @@ export class ListarUserComponent {
     }) //de esta manera ya estaría mostrando todo en nuestro formulario
   }
 
-
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
+    dialogConfig.width = "37%";
     this.dialog.open(VerDialogUserComponent, dialogConfig); 
   }
 

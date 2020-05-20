@@ -17,6 +17,7 @@ export class VerDialogComponent implements OnInit {
   
   persona: Persona = new Persona();
   doorkey: Doorkey = new Doorkey();
+  
   doorkeys: Doorkey[] = [];
 
   constructor(
@@ -29,19 +30,17 @@ export class VerDialogComponent implements OnInit {
 
   ngOnInit(): void {
     let dni = localStorage.getItem("dni");
+    console.log(dni)
     this.service.getPersonaDni(+dni)
     .subscribe(data => {
       this.persona = data;
     })
   }
 
- async onDelete(doorkey: Doorkey){
-  await  this.serviceDoorkey.deleteDoorkey(doorkey)
-    .subscribe(() => {
-      this.persona.doorkeys = this.persona.doorkeys.filter(p=>p!==doorkey);
-      this.notificationService.successDelete(':: Se eliminó correctamente')
-     
-    });
+  onDelete(doorkey: Doorkey){
+    this.serviceDoorkey.deleteDoorkey(doorkey)
+    this.doorkeys = this.doorkeys.filter(p=>p!==doorkey);
+    this.notificationService.successDelete(':: Se eliminó correctamente');
   }
 
   onClose() {

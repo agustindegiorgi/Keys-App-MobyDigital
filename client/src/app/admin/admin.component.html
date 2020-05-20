@@ -12,21 +12,26 @@
 </head>
 <body class="bg-dark">
 
-<nav class="navbar navbar-dark sticky-top" style="background-color: #f7444e;"> <!-- BARRA DE NAVEGACIÓN -->   
-  <a class="navbar-brand"  (click)="logout()">  
-      Cerrar sesión
-  </a>
-  <!-- <a class="navbar-brand" href="/home">
-      <img src="../../assets/images/logomobygrande.png" style="max-height: 30px;" alt="MOBYDIGITAL"/>
-  </a> -->
-  <a href="/admin">
-      <div class="home-button">
-          <button mat-icon-button>
-          <mat-icon>home</mat-icon>
-          </button>
-      </div>
-  </a>
-</nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
+  <nav class="navbar navbar-dark sticky-top" style="background-color: #f7444e;"> <!-- BARRA DE NAVEGACIÓN -->   
+    
+    <a class="navbar-brand" (click)="logout()">  
+        <div class="home-button">
+            <button mat-icon-button matTooltipPosition="after" matTooltip="Desconectarse">
+            <mat-icon>power_off</mat-icon>
+            </button>
+        </div>
+    </a>
+    <!-- <a class="navbar-brand" href="/home">
+        <img src="../../assets/images/logomobygrande.png" style="max-height: 30px;" alt="MOBYDIGITAL"/>
+    </a> -->
+    <a href="/admin">
+        <div class="home-button">
+            <button mat-icon-button matTooltipPosition="before" matTooltip="Ir al inicio">
+            <mat-icon>home</mat-icon>
+            </button>
+        </div>
+    </a>
+  </nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
 
 <br><br><br><br>
 <div class="container d-flex align-items-center flex-column justify-content-center 

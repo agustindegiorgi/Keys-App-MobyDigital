@@ -1,25 +1,25 @@
 <div>
     <mat-toolbar>
-        <span class="fill-remaining-space">Llaves en posesión</span>
+        <span class="fill-remaining-space">Llaves en posesión de {{persona.name}} {{persona.lastname}}</span>
         <span class="spacer"></span>
         <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
             <mat-icon>clear</mat-icon> 
         </button>
     </mat-toolbar>
-    <div class="body">
-        <table class="table table-hover table-light">
-            <thead>
-                <tr class="text-center">
-                    <th>ID</th>
-                    <th>NOMBRE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let persona of personas" class="text-center"> 
-                    <td>{{persona.doorkeys}}</td>
-                    <td>{{persona.name}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> <!-- FIN DIV LISTA -->
+        <div class="body">
+            <table class="table table-hover table-light">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let doorkey of persona.doorkeys" class="text-center"> 
+                        <td>{{doorkey.id}}</td>
+                        <td>{{doorkey.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- FIN DIV LISTA -->
 </div> <!-- FIN DIV GENERAL -->

@@ -42,7 +42,7 @@ export class PersonaService {
     lastname: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
     telephone: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    doorkeys: new FormControl([], Validators.required)
+    doorkeys: new FormControl([])
   });
 
   initializeFormGroup() {

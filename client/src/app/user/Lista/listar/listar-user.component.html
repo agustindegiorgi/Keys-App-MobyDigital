@@ -1,13 +1,18 @@
 <nav class="navbar navbar-dark sticky-top" style="background-color: #f7444e;"> <!-- BARRA DE NAVEGACIÓN -->   
+  
     <a class="navbar-brand" (click)="logout()">  
-        Cerrar sesión
+        <div class="home-button">
+            <button mat-icon-button matTooltipPosition="after" matTooltip="Desconectarse">
+            <mat-icon>power_off</mat-icon>
+            </button>
+        </div>
     </a>
     <!-- <a class="navbar-brand" href="/home">
         <img src="../../assets/images/logomobygrande.png" style="max-height: 30px;" alt="MOBYDIGITAL"/>
     </a> -->
     <a href="/user">
         <div class="home-button">
-            <button mat-icon-button>
+            <button mat-icon-button matTooltipPosition="before" matTooltip="Ir al inicio">
             <mat-icon>home</mat-icon>
             </button>
         </div>
@@ -20,7 +25,7 @@
 
     <mat-toolbar>
         <span class="fill-remaining-space">
-            Nuevo Moby Digimon!
+            Listado de Moby
         </span>
     </mat-toolbar>
     

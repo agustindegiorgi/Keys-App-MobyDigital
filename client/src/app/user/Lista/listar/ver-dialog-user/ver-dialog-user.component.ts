@@ -12,28 +12,28 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class VerDialogUserComponent implements OnInit {
 
-  personas: Persona[]; //lista de personas vacía+
+  persona: Persona = new Persona();
   doorkeys: Doorkey[] = [];
   
   constructor(
-    private service:PersonaService, 
-    private router:Router,
-    public dialogRef: MatDialogRef<VerDialogUserComponent>
-    ) {}
+              private service: PersonaService, 
+              private router: Router,
+              public dialogRef: MatDialogRef<VerDialogUserComponent>
+              ) {}
 
-    ngOnInit(): void {
-      //acá trabajo el método Listar
-      this.service.getPersonas()
-      .subscribe((data: Persona[])=>{
-        this.personas=data;
-      }) //de esta manera ya estaría mostrando todo en nuestro formulario
-    }
-  
-    onClose() {
-      this.service.form.reset();
-      this.service.initializeFormGroup();
-      this.dialogRef.close();
-    }
-  
+  ngOnInit(): void {
+    let dni = localStorage.getItem("dni");
+    this.service.getPersonaDni(+dni)
+    .subscribe(data => {
+      this.persona = data;
+    })
+  }
+
+  onClose() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
+
 }
 

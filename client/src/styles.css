@@ -3,19 +3,12 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 /*    MENSAJES DE NOTIFICACIONES    */
-snack-bar-container.success {
+snack-bar-container.successDelete,
+snack-bar-container.success,
+snack-bar-container.successUpdate,
+snack-bar-container.successLogin {
     background-color: #5cb85c;
     color: #ffffff;
-}
-
-snack-bar-container.successDelete {
-    background-color: #5cb85c;
-    color: #ffffff;
-}
-
-snack-bar-container.successUpdate {
-    background-color: #5cb85c;
-    color: #ffffff;  
 }
 
 snack-bar-container.notification simple-snack-bar {

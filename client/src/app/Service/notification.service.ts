@@ -31,4 +31,10 @@ export class NotificationService {
     this.config['panelClass'] = ['notification', 'success'];
     this.snackBar.open(msg, '', this.config);
   }
+
+  //NOTIFICACIÓN CUANDO INICIAS SESIÓN
+  successLogin(msg) {
+    this.config['panelClass'] = ['notification', 'success'];
+    this.snackBar.open(msg, '', this.config);
+  }
 }
