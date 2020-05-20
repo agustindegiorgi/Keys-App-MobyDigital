@@ -19,22 +19,9 @@ export class NotificationService {
     this.config['panelClass'] = ['notification', 'success'];
     this.snackBar.open(msg, '', this.config);
   }
-  
-  //NOTIFICACIÓN CUANDO ELIMINAS A UNA PERSONA DE LA LISTA
-  successDelete(msg) {
-    this.config['panelClass'] = ['notification', 'success'];
-    this.snackBar.open(msg, '', this.config);
-  }
 
-  //NOTIFICACIÓN CUANDO ELIMINAS A UNA PERSONA DE LA LISTA
-  successUpdate(msg) {
-    this.config['panelClass'] = ['notification', 'success'];
-    this.snackBar.open(msg, '', this.config);
-  }
-
-  //NOTIFICACIÓN CUANDO INICIAS SESIÓN
-  successLogin(msg) {
-    this.config['panelClass'] = ['notification', 'success'];
+  warn(msg) {
+    this.config['panelClass'] = ['notification', 'warn'];
     this.snackBar.open(msg, '', this.config);
   }
 }

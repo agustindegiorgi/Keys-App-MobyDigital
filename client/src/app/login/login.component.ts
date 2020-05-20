@@ -36,15 +36,16 @@ export class LoginComponent {
       if (data == 'OK ADMIN' ) {
         window.localStorage.setItem("apiMessage",data.toString()) 
         this.router.navigate(["admin"])
-        this.notificationService.successLogin(':: Sesión iniciada correctamente');
+        this.notificationService.success('[admin] :: Sesión iniciada correctamente');
       }
       else {
         if (data == 'OK USER') {
           window.localStorage.setItem("apiMessage",data.toString())
           this.router.navigate(["user"])
+          this.notificationService.success('[user] :: Sesión iniciada correctamente');
         }
         else {
-          alert('Usuario o Contraseña mal ingresados')
+          this.notificationService.warn(':: Error al querer iniciar sesión');
         }
       }
     });

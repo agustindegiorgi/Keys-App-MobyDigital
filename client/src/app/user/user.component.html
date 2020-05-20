@@ -43,8 +43,11 @@
 <hr>
 
  <br>
-<div class="container text-center container-light d-flex justify-content-center"> <!-- LISTADO DE PERSONAS -->  
-  <button (click)="Listar()" mat-raised-button style="background-color: #f7444e;" class="button-text">Listar</button>
+ <div class="container text-center container-light d-flex justify-content-center"> <!-- LISTADO DE PERSONAS -->  
+  <button class="button-text" (click)="Listar()" mat-raised-button>
+    <mat-icon class="list">list</mat-icon>
+      Listar
+  </button>
 </div> <!-- FIN ** LISTADO DE PERSONAS -->
 
 <router-outlet></router-outlet>

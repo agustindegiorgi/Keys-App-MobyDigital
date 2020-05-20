@@ -55,7 +55,7 @@ export class ListarComponent {
     this.service.deletePersona(persona)
     .subscribe(() => {
       this.personas=this.personas.filter(p=>p!==persona);
-      this.notificationService.successDelete(':: Se eliminó correctamente');
+      this.notificationService.success(':: Se eliminó correctamente');
     })
   }
 

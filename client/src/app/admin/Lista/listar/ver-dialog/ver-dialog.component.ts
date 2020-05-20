@@ -40,7 +40,7 @@ export class VerDialogComponent implements OnInit {
   onDelete(doorkey: Doorkey){
     this.serviceDoorkey.deleteDoorkey(doorkey)
     this.doorkeys = this.doorkeys.filter(p=>p!==doorkey);
-    this.notificationService.successDelete(':: Se eliminó correctamente');
+    this.notificationService.success(':: Se eliminó correctamente');
   }
 
   onClose() {

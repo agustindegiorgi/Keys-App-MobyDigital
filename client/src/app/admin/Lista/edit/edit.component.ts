@@ -48,7 +48,7 @@ export class EditComponent implements OnInit {
     this.service.updatePersona(persona)
     .subscribe(data => {
       this.persona=data as any;
-      this.notificationService.successUpdate(':: Se actualizó correctamente');
+      this.notificationService.success(':: Se actualizó correctamente');
       this.onClose();
     })
   }
