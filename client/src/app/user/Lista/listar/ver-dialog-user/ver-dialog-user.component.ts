@@ -8,12 +8,12 @@ import { DoorkeyService } from 'src/app/Service/doorkey.service';
 import { NotificationService } from "../../../../Service/notification.service";
 
 @Component({
-  selector: 'app-ver-dialog',
-  templateUrl: './ver-dialog.component.html',
-  styleUrls: ['./ver-dialog.component.css']
+  selector: 'app-ver-dialog-user',
+  templateUrl: './ver-dialog-user.component.html',
+  styleUrls: ['./ver-dialog-user.component.css']
 })
 
-export class VerDialogComponent implements OnInit {
+export class VerDialogUserComponent implements OnInit {
   
   persona: Persona = new Persona();
   doorkey: Doorkey = new Doorkey();
@@ -23,7 +23,7 @@ export class VerDialogComponent implements OnInit {
   constructor(
               private service: PersonaService,
               private router: Router,
-              public dialogRef: MatDialogRef<VerDialogComponent>,
+              public dialogRef: MatDialogRef<VerDialogUserComponent>,
               public serviceDoorkey: DoorkeyService,
               public notificationService: NotificationService
               ) {}
