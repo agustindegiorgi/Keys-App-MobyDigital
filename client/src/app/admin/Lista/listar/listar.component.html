@@ -19,23 +19,20 @@
     </a>
   </nav> <!-- FIN ** BARRA DE NAVEGACIÓN -->
 
-<br>
-
 <div class="search-div">
-<mat-form-field class="search-form-field" floatLabel="never">
-    <input matInput [(ngModel)]="searchKey" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter()">
-    <button mat-button matSuffix mat-icon-button aria-label="Borrar" *ngIf="searchKey" (click)="onSearchClear()">
-        <mat-icon>close</mat-icon>
-    </button>
-</mat-form-field>
-<button (click)="onNew()" mat-mini-fab matTooltip="Agregá un Moby Digimon!" matTooltipPosition="above" color="classic" class="add-button">
-    <mat-icon class="add-icon">add</mat-icon>
-</button>
-<button (click)="addDoorkeys()" mat-mini-fab matTooltip="Agregá llaves!" matTooltipPosition="above" color="classic" class="key-button">
-    <mat-icon class="key-icon">vpn_key</mat-icon>
-</button>
+    <mat-toolbar>
+        <span class="fill-remaining-space">
+            Listado de Moby
+        </span>
+    </mat-toolbar>
+    <mat-form-field class="search-form-field" floatLabel="never" appearance="fill">
+        <input matInput [(ngModel)]="searchKey" placeholder="Buscar (por DNI, nombre, apellido, etc...)" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Borrar" *ngIf="searchKey" (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
 </div>
-<div class="mat-elevation-z8 justify-text-center">
+<div class="table-container mat-elevation-z8">
     <mat-table [dataSource]="listData" matSort>
         <ng-container matColumnDef="dni">
             <mat-header-cell *matHeaderCellDef mat-sort-header>DNI</mat-header-cell>
@@ -67,7 +64,14 @@
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>
+                <button (click)="onNew()" mat-mini-fab matTooltip="Agregá un Moby Digimon!" matTooltipPosition="above" color="classic" class="add-button">
+                    <mat-icon class="add-icon">add</mat-icon>
+                </button>
+                <button (click)="addDoorkeys()" mat-mini-fab matTooltip="Agregá llaves!" matTooltipPosition="above" color="classic" class="key-button">
+                    <mat-icon class="key-icon">vpn_key</mat-icon>
+                </button>
+            </mat-header-cell>
             <mat-cell *matCellDef="let persona">
                 <button mat-raised-button color="accent" (click)="onEdit(persona)">
                     Editar
@@ -92,7 +96,8 @@
         <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
     </mat-table>
-    <mat-paginator [pageSizeOptions] = "[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions] = "[5, 10, 25, 100]" [pageSize]="5" 
+    itemsPerPageLabel="Items por página" showFirstLastButtons></mat-paginator>
 </div>
 <!--<div class="container container-light">
     
