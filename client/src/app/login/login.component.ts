@@ -15,9 +15,10 @@ export class LoginComponent {
   username: number;
   password: number;
   message: any;
+  hide = true;
 
   constructor(
-              private loginService: LoginService,
+              public loginService: LoginService,
               private router: Router,
               public notificationService: NotificationService
               ) {}
@@ -37,12 +38,16 @@ export class LoginComponent {
         window.localStorage.setItem("apiMessage",data.toString()) 
         this.router.navigate(["admin"])
         this.notificationService.success('[admin] :: Sesión iniciada correctamente');
+        this.loginService.form.reset();
+        this.loginService.initializeFormGroup();
       }
       else {
         if (data == 'OK USER') {
           window.localStorage.setItem("apiMessage",data.toString())
           this.router.navigate(["user"])
           this.notificationService.success('[user] :: Sesión iniciada correctamente');
+          this.loginService.form.reset();
+          this.loginService.initializeFormGroup();
         }
         else {
           this.notificationService.warn(':: Error al querer iniciar sesión');

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +17,16 @@ export class LoginService {
     // return this.http.get("http://localhost:8081?username="+username+"&password="+password,{headers,responseType: 'text' as 'json'})
     }
 
+    form: FormGroup = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)])
+    });
+    
+    initializeFormGroup() {
+      this.form.setValue({
+        dni: null,
+        password: null
+      });
+    }
 }
+

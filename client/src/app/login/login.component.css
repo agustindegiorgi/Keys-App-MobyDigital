@@ -6,12 +6,22 @@ body,html {
     width: 600px;
     height: 350px;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: inline-flex;
 }
 
-.button-text {
+.mat-form-field {
+    width: 40%;
+    margin-top: 2%;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.login-button {
     color: #ffffff;
+    background-color: #f7444e;
+    margin-top: 2%;
 }

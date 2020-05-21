@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-</head>
-<body>
-    <div class="container d-flex align-items-center flex-column justify-content-center h-100 bg-dark text-white" id="container">
+<form [formGroup]="loginService.form" npm class="normal-form">
+        <mat-grid-list cols="1" rowHeight="450px">
+            <mat-grid-tile>
+            <div class="container d-flex align-items-center flex-column justify-content-center h-100 bg-dark" id="container">
+                <h1 class="display-4 text-white">Ingresá</h1>
+                <input type="hidden" formControlName="username">
+                <mat-form-field class="login-form-field" floatLabel="never">
+                    <mat-label>Usuario</mat-label>
+                    <input formControlName="username" [(ngModel)]="username" matInput placeholder="Usuario" required> <!--SIEMPRE se le agrega matInput-->
+                    <mat-error>Faltó rellenar el campo.</mat-error>
+                </mat-form-field>
+                <mat-form-field class="login-form-field" floatLabel="never">
+                    <mat-label>Contraseña</mat-label>
+                    <input [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="password" type="password" 
+                        matInput placeholder="Contraseña" required>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    <mat-error *ngIf="loginService.form.controls['password'].errors?.required">Faltó rellenar el campo.</mat-error>
+                    <mat-error *ngIf="loginService.form.controls['password'].errors?.minlength">Mínimo 4 caracteres.</mat-error>
+                </mat-form-field>
+                    <button mat-raised-button class="login-button" type="submit" (click)="onSubmit()">Vamos!</button>
+            </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+    <!--<div class="container d-flex align-items-center flex-column justify-content-center h-100 bg-dark text-white" id="container">
         <h1 class="display-4">Ingresá</h1>
         <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
@@ -21,6 +39,4 @@
                 <button mat-raised-button style="background-color: #f7444e;" class="button-text" type="submit" (click)="onSubmit()">Vamos!</button>
             </div>
         </form>
-    </div>
-</body>
-</html>
+    </div>-->

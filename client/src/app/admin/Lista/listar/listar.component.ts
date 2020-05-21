@@ -44,12 +44,12 @@ export class ListarComponent {
     }
     //acá trabajo el método Listar
     this.service.getPersonas()
-    .subscribe((data: Persona[])=>{
-      this.personas = data;
-      this.listData = new MatTableDataSource(this.personas);
-      this.listData.sort = this.sort;
-      this.listData.paginator = this.paginator;
-    }) //de esta manera ya estaría mostrando todo en nuestro formulario
+    .subscribe((data: Persona[]) => {
+      this.personas = data; //de esta manera ya estaría mostrando todo en nuestro formulario
+        this.listData = new MatTableDataSource(this.personas);
+        this.listData.sort = this.sort;
+        this.listData.paginator = this.paginator;
+    })
     
   }
 

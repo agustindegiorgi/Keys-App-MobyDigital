@@ -1,3 +1,68 @@
+/* home color de navbar */
 .home-button {
-    color: #FFFFFF; /* home color */
+    color: #FFFFFF;
 }
+
+.key-button {
+    margin-left: 40px;
+}
+
+.hide {
+    display: none;
+}
+
+/* mat-toolbar */
+.mat-toolbar {
+    margin-top: 2%;
+    position: relative;
+    left: 5%;
+    width: 90%;
+    justify-content: center;
+}
+
+/* Structure */
+.table-container {
+    width: 90%;
+    position: absolute;
+    left: 5%;
+}
+
+/* mat-table */
+.mat-table {
+    width: 100%;
+}
+
+mat-footer-row mat-footer-cell {
+    justify-content: center;
+    font-style: italic;
+}
+
+    .mat-header-cell {
+        justify-content: center;
+    }
+    
+        .mat-cell {
+            text-align: center;
+            justify-content:center;
+        }
+
+            /* COLUMNA DNI */
+            .mat-column-dni {
+                word-wrap: break-word !important;
+                white-space: unset !important;
+                flex: 0 0 8% !important;
+                width: 8% !important;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+
+            /* COLUMNA EMAIL */
+            .mat-column-email {
+                word-wrap: break-word !important;
+                white-space: unset !important;
+                flex: 0 0 20% !important;
+                width: 40% !important;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+    
