@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-//Entidad Usuario
+//Entidad User
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
